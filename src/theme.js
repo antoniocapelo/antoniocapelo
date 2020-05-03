@@ -17,10 +17,23 @@ breakpoints.lg = breakpoints[2]
 breakpoints.xl = breakpoints[3]
 
 
+const fonts = {
+  heading: "Messapia-bold",
+  copy: "Porpora",
+}
+
+const fontSizes = ['3rem', '3.2rem', '3.9rem', '5rem', '6.4rem']
+fontSizes.sm = fontSizes[0]
+fontSizes.md = fontSizes[1]
+fontSizes.lg = fontSizes[2]
+fontSizes.xl = fontSizes[3]
+fontSizes.xxl = fontSizes[4]
+
 const theme = {
   colors,
   space,
-  breakpoints
+  breakpoints,
+  fontSizes
 }
 
 export default theme;
