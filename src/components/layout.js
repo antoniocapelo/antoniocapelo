@@ -8,8 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { ThemeProvider } from 'emotion-theming'
-
+import { ThemeProvider } from "emotion-theming"
 
 import "./layout.css"
 import theme from "../theme"
@@ -28,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Content bg="red">
+      <Content bg="cyan">
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with

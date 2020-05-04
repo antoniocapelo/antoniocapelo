@@ -1,4 +1,3 @@
-
 const colors = {
   primary: "#E4D5B6",
   secondary: "#555555",
@@ -6,9 +5,9 @@ const colors = {
   dark: "#222222",
 }
 
-const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80];
+const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80]
 
-const breakpoints = ['544px', '768px', '1440px', '1920px']
+const breakpoints = ["544px", "769px", "1440px", "1920px"]
 
 // aliases
 breakpoints.sm = breakpoints[0]
@@ -16,25 +15,41 @@ breakpoints.md = breakpoints[1]
 breakpoints.lg = breakpoints[2]
 breakpoints.xl = breakpoints[3]
 
-
 const fonts = {
   heading: "Messapia-bold",
   copy: "Porpora",
 }
 
-const fontSizes = ['3rem', '3.2rem', '3.9rem', '5rem', '6.4rem']
+const fontSizes = ["3rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
 fontSizes.sm = fontSizes[0]
 fontSizes.md = fontSizes[1]
 fontSizes.lg = fontSizes[2]
 fontSizes.xl = fontSizes[3]
 fontSizes.xxl = fontSizes[4]
 
+const maxContentWidth = breakpoints.lg
+const minContentWidth = "320px"
+
+const transitions = {
+  durations: {
+    fast: 200,
+    normal: 300,
+    long: 450,
+  },
+  easings: {
+    inOut: "cubic-bezier(0.65, 0, 0.35, 1)",
+  },
+}
+
 const theme = {
   fonts,
   colors,
   space,
+  transitions,
   breakpoints,
-  fontSizes
+  fontSizes,
+  maxContentWidth,
+  minContentWidth,
 }
 
-export default theme;
+export default theme
