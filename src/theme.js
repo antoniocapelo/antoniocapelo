@@ -30,6 +30,7 @@ fontSizes.xl = fontSizes[3]
 fontSizes.xxl = fontSizes[4]
 
 const theme = {
+  fonts,
   colors,
   space,
   breakpoints,

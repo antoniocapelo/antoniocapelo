@@ -11,7 +11,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from 'emotion-theming'
 
 
-import Header from "./header"
 import "./layout.css"
 import theme from "../theme"
 import Content from "../layout/content"
@@ -29,7 +28,6 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header siteTitle={data.site.siteMetadata.title} />
       <Content bg="red">
         <main>{children}</main>
         <footer>

@@ -10,20 +10,15 @@ import Heading from "../components/typography/heading"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Box p={[2, 6, 8]}>
-      {/* <Heading level={1}>Heading 1</Heading>
-      <Heading level={1}>Heading 1</Heading> */}
-      {/* <Heading level={2}>Heading 2</Heading> */}
-      <Heading level={1} pb="2">Heading 1</Heading>
+    <Box>
+      <Box py="2"/>
+      <Heading level={1}>Heading 1</Heading>
       <Heading level={2}>Heading 2</Heading>
       <Heading level={3}>Heading 3</Heading>
       <Heading level={4}>Heading 4</Heading>
       <Heading level={5}>Heading 5</Heading>
       <Heading level={6}>Heading 6</Heading>
-      {/* <Heading level={3}>Heading 3</Heading>
-      <Heading level={4}>Heading 4</Heading>
-      <Heading level={5}>Heading 5</Heading>
-      <Heading level={6}>Heading 6</Heading> */}
+      
     </Box>
 
     <Link to="/page-2/">Go to page 2</Link>
