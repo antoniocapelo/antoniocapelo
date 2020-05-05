@@ -39,13 +39,14 @@ const Link = styled("a")`
   text-decoration: none;
   display: flex;
   position: relative;
+
   &:hover:before {
-    transform: scaleX(0.16);
+    transform: ${props => (props.active ? "scaleX(0.24)" : "scaleX(0.16)")};
   }
 
   &:before {
     will-change: transform;
-    transform: scaleX(0.24);
+    transform: ${props => (props.active ? "scaleX(0.24)" : "scaleX(0)")};
     transition: transform ${theme.transitions.durations.fast}ms
       ${theme.transitions.easings.inOut};
     transform-origin: left;
@@ -68,12 +69,16 @@ const Links = styled("div")`
   align-items: center;
 `
 
-const Header = ({ secondary = false, ...props }) => (
+const Header = ({ secondary = false, current, onClick, ...props }) => (
   <Wrapper bg="dark">
     <Links>
       {items.map(({ label, path }) => (
         <Link
-          onClick={() => navigate(path)}
+          active={path === current}
+          onClick={() => {
+            navigate(path)
+            onClick && onClick(path)
+          }}
           fontSize="2.4rem"
           color="primary"
           href={path}

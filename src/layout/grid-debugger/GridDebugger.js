@@ -52,7 +52,7 @@ const getGridProperty = (input, theme, property) => {
 const Col = styled.div`
   width: 100%;
   height: 100vh;
-  opacity: 0.1;
+  opacity: 0.2;
   background: #ff0000;
 `
 
