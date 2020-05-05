@@ -12,27 +12,62 @@ import Content from "../layout/content"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Content fullHeight bg="primary">
+    <Box mt="8" />
+    <Content
+      fullHeight
+      bg="primary"
+      id="about"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Box>
         <Box py="2" />
-        <Heading level={2}>Heading 2</Heading>
-        <Heading level={3}>Heading 3</Heading>
-        <Heading level={4}>Heading 4</Heading>
-        <Heading level={5}>Heading 5</Heading>
-        <Heading level={6}>Heading 6</Heading>
+        <Heading level={2}>About</Heading>
       </Box>
     </Content>
 
-    <Box>
-      <Box py="2" />
-      <Heading level={2}>Heading 2</Heading>
-      <Heading level={3}>Heading 3</Heading>
-      <Heading level={4}>Heading 4</Heading>
-      <Heading level={5}>Heading 5</Heading>
-      <Heading level={6}>Heading 6</Heading>
-    </Box>
+    <Content
+      fullHeight
+      bg="dark"
+      justifyContent="center"
+      alignItems="center"
+      id="experience"
+    >
+      <Box>
+        <Box py="2" />
+        <Heading color="primary" level={2}>
+          Experience
+        </Heading>
+      </Box>
+    </Content>
 
-    <Link to="/page-2/">Go to page 2</Link>
+    <Content
+      fullHeight
+      bg="primary"
+      id="other-projects"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Box>
+        <Box py="2" />
+        <Heading level={2}>Other projects</Heading>
+      </Box>
+    </Content>
+
+    <Content
+      fullHeight
+      bg="dark"
+      justifyContent="center"
+      alignItems="center"
+      id="contact"
+    >
+      <Box>
+        <Box py="2" />
+        <Heading color="primary" level={2}>
+          Contacts
+        </Heading>
+      </Box>
+    </Content>
   </Layout>
 )
 

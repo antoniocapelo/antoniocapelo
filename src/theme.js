@@ -41,8 +41,13 @@ const transitions = {
   },
 }
 
+const layout = {
+  headerHeight: space[8],
+}
+
 const theme = {
   fonts,
+  layout,
   colors,
   space,
   transitions,

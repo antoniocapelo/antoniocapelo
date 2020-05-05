@@ -1,14 +1,19 @@
 import styled from "@emotion/styled"
 import { navigate } from "@reach/router"
 import React from "react"
-import { color, space, typography } from "styled-system"
+import { color, space, typography, layout } from "styled-system"
 import theme from "../../theme"
 
 const Wrapper = styled("header")`
-  ${typography}
+  ${layout}
   ${space}
   ${color}
-  min-height: 108px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  min-height: ${theme.layout.headerHeight}px;
   display: flex;
   justify-content: flex-end;
 `
@@ -39,13 +44,14 @@ const Link = styled("a")`
   display: flex;
   position: relative;
 
+  &:focus:before,
   &:hover:before {
-    transform: ${props => (props.active ? "scaleX(0.24)" : "scaleX(0.16)")};
+    transform: scaleX(0.24);
   }
 
   &:before {
     will-change: transform;
-    transform: ${props => (props.active ? "scaleX(0.24)" : "scaleX(0)")};
+    transform: scaleX(0);
     transition: transform ${theme.transitions.durations.fast}ms
       ${theme.transitions.easings.inOut};
     transform-origin: left;
@@ -62,31 +68,32 @@ const Link = styled("a")`
 
 const Links = styled("div")`
   display: flex;
-  width: 100%;
+  width: 80%;
   max-width: 800px;
   justify-content: space-around;
   align-items: center;
 `
 
-const Header = ({ secondary = false, current, onClick, ...props }) => (
-  <Wrapper bg="dark">
-    <Links>
-      {items.map(({ label, path }) => (
-        <Link
-          active={path === current}
-          onClick={() => {
-            navigate(path)
-            onClick && onClick(path)
-          }}
-          fontSize="2.4rem"
-          color="primary"
-          href={path}
-        >
-          {label}
-        </Link>
-      ))}
-    </Links>
-  </Wrapper>
-)
+const Header = ({ secondary = false, current, onClick, ...props }) => {
+  return (
+    <Wrapper bg="dark" display={["none", "none", "flex"]}>
+      <Links>
+        {items.map(({ label, path }) => (
+          <Link
+            onClick={() => {
+              navigate(path)
+              onClick && onClick(path)
+            }}
+            fontSize="2.4rem"
+            color="primary"
+            href={path}
+          >
+            {label}
+          </Link>
+        ))}
+      </Links>
+    </Wrapper>
+  )
+}
 
 export default Header

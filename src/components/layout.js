@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import React, { useState, useCallback } from "react"
 import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
+import Header from "./header/"
 import theme from "../theme"
 import "./layout.css"
 
@@ -48,6 +49,7 @@ const Layout = ({ children }) => {
           margin={{ 320: "32px", 769: "48px" }}
         />
       )}
+      <Header />
       <main>{children}</main>
     </>
   )
