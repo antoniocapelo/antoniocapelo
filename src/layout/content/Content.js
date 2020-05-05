@@ -1,52 +1,33 @@
 import styled from "@emotion/styled"
-import React, { useCallback, useState } from "react"
-import { color, layout, space } from "styled-system"
-import Box from "../../components/box"
-import useEventListener from "../../hooks/useEventListener"
+import React from "react"
+import { color, layout, space, flexbox } from "styled-system"
 import theme from "../../theme"
-import GridDebugger from "../grid-debugger"
+import useUserAgent from "../../providers/user-agent/useUserAgent"
 
-const ContentBase = styled("div")`
+const ContentBase = styled("section")`
   ${layout}
   ${space}
+  ${flexbox}
   ${color}
+  display: flex;
+  box-sizing: border-box;
+    min-height: ${({ isIos, fullHeight }) =>
+      fullHeight ? (isIos ? "calc(100vh - 75px)" : "100vh") : "0px"};
 `
 
-const Content = props => {
-  const [showDebugger, setShowDebugger] = useState(false)
-
-  const handler = useCallback(
-    event => {
-      // Update coordinates
-      if (event.ctrlKey && event.key === "l") {
-        setShowDebugger(!showDebugger)
-      }
-    },
-    [setShowDebugger, showDebugger]
-  )
-
-  useEventListener("keydown", handler)
+const Content = ({ fullHeight, ...props }) => {
+  const { isIos } = useUserAgent()
 
   return (
-    <>
-      {showDebugger && (
-        <GridDebugger
-          show
-          maxWidth={theme.maxContentWidth}
-          theme={theme}
-          numCols={{ 320: 6, 769: 12 }}
-          gutter={{ 320: "24px" }}
-          margin={{ 320: "32px", 769: "48px" }}
-        />
-      )}
-      <ContentBase
-        mx="auto"
-        px={[5, 5, 7]}
-        maxWidth={theme.maxContentWidth}
-        minWidth={theme.minContentWidth}
-        {...props}
-      />
-    </>
+    <ContentBase
+      fullHeight={fullHeight}
+      isIos={isIos}
+      mx="auto"
+      px={[5, 5, 7]}
+      maxWidth={theme.maxContentWidth}
+      minWidth={theme.minContentWidth}
+      {...props}
+    />
   )
 }
 

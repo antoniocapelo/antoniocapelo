@@ -1,8 +1,7 @@
-import React from "react"
-import { navigate } from "@reach/router"
 import styled from "@emotion/styled"
-import Copy from "../typography/copy"
-import { typography, space, color, flexbox } from "styled-system"
+import { navigate } from "@reach/router"
+import React from "react"
+import { color, space, typography } from "styled-system"
 import theme from "../../theme"
 
 const Wrapper = styled("header")`
