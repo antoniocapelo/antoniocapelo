@@ -121,14 +121,6 @@ const Grid = styled.div`
   `};
 `
 
-// const GridDebugger = styled("div")`
-//   max-width: ${theme.breakpoints.lg};
-//   min-width: ${320}px;
-//   padding: 0 ${theme.space[7]}px;
-//   margin: 0 auto;
-//   ${color}
-// `
-
 const GridDebugger = ({ theme, gutter, margin, maxWidth, numCols }) => {
   const marginObject = getGridProperty(margin, theme)
   const guttersObject = getGridProperty(gutter, theme)

@@ -1,9 +1,7 @@
 import React, { useState } from "react"
-import { action } from "@storybook/addon-actions"
-import Heading from "../src/components/typography/heading"
-import CopyComponent from "../src/components/typography/copy"
-import Box from "../src/components/box"
 import HeaderComponent from "../src/components/header"
+import Copy from "../src/components/typography/copy"
+import theme from "../src/theme"
 
 export default {
   title: "Header",
@@ -14,15 +12,14 @@ const HeaderDemo = () => {
   const [current, setCurrent] = useState("#about")
   const handleClick = path => setCurrent(path)
 
-  return <HeaderComponent onClick={handleClick} current={current} />
+  return (
+    <>
+      <HeaderComponent onClick={handleClick} current={current} />
+      <Copy fontSize="xs">
+        Note: header only appears on screens bigger than {theme.breakpoints.md}
+      </Copy>
+    </>
+  )
 }
 
 export const Header = () => <HeaderDemo />
-
-// export const Emoji = () => (
-//   <Button onClick={action('clicked')}>
-//     <span role="img" aria-label="so cool">
-//       😀 😎 👍 💯
-//     </span>
-//   </Button>
-// );

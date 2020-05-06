@@ -10,9 +10,27 @@ const ContentBase = styled("section")`
   ${flexbox}
   ${color}
   display: flex;
+  scroll-margin: ${theme.layout.headerHeight}px;
   box-sizing: border-box;
+  min-height: ${({ isIos, fullHeight }) =>
+    fullHeight
+      ? isIos
+        ? `calc(100vh - ${
+            theme.layout.headerHeight + theme.layout.iosBottomBarHeight
+          }px)`
+        : `calc(100vh - ${theme.layout.headerHeight}px)`
+      : "0px"};
+
+  @media (max-width: ${theme.breakpoints.md}) {
     min-height: ${({ isIos, fullHeight }) =>
-      fullHeight ? (isIos ? "calc(100vh - 75px)" : "100vh") : "0px"};
+      fullHeight
+        ? isIos
+          ? `calc(100vh - ${theme.layout.iosBottomBarHeight}px)`
+          : "100vh"
+        : "0px"};
+  }
+
+
 `
 
 const Content = ({ fullHeight, ...props }) => {

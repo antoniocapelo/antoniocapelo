@@ -20,12 +20,13 @@ const fonts = {
   copy: "Porpora",
 }
 
-const fontSizes = ["3rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
-fontSizes.sm = fontSizes[0]
-fontSizes.md = fontSizes[1]
-fontSizes.lg = fontSizes[2]
-fontSizes.xl = fontSizes[3]
-fontSizes.xxl = fontSizes[4]
+const fontSizes = ["2rem", "3rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
+fontSizes.xs = fontSizes[0]
+fontSizes.sm = fontSizes[1]
+fontSizes.md = fontSizes[2]
+fontSizes.lg = fontSizes[3]
+fontSizes.xl = fontSizes[4]
+fontSizes.xxl = fontSizes[5]
 
 const maxContentWidth = breakpoints.lg
 const minContentWidth = "320px"
@@ -43,6 +44,7 @@ const transitions = {
 
 const layout = {
   headerHeight: space[8],
+  iosBottomBarHeight: 75,
 }
 
 const theme = {

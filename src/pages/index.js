@@ -12,7 +12,6 @@ import Content from "../layout/content"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <Box mt="8" />
     <Content
       fullHeight
       bg="primary"

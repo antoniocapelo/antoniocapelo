@@ -5,14 +5,20 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState, useCallback } from "react"
 import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
 import Header from "./header/"
+import { color, space, typography, layout } from "styled-system"
 import theme from "../theme"
 import "./layout.css"
+
+const Main = styled("main")`
+  ${space}
+`
 
 const Layout = ({ children }) => {
   const [showDebugger, setShowDebugger] = useState(false)
@@ -50,7 +56,7 @@ const Layout = ({ children }) => {
         />
       )}
       <Header />
-      <main>{children}</main>
+      <Main mt={["0px", "0px", theme.layout.headerHeight]}>{children}</Main>
     </>
   )
 }

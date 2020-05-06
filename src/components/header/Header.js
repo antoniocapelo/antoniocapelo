@@ -14,7 +14,6 @@ const Wrapper = styled("header")`
   right: 0;
   z-index: 50;
   min-height: ${theme.layout.headerHeight}px;
-  display: flex;
   justify-content: flex-end;
 `
 
@@ -80,6 +79,7 @@ const Header = ({ secondary = false, current, onClick, ...props }) => {
       <Links>
         {items.map(({ label, path }) => (
           <Link
+            key={path}
             onClick={() => {
               navigate(path)
               onClick && onClick(path)
