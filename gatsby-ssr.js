@@ -10,9 +10,12 @@ import { ThemeProvider } from "emotion-theming"
 import React from "react"
 import UserAgentProvider from "./src/providers/user-agent/UserAgentProvider"
 import theme from "./src/theme"
+import MousePositionProvider from "./src/providers/mouse-position/MousePositionProvider"
 
 export const wrapRootElement = ({ element }) => (
   <UserAgentProvider>
-    <ThemeProvider theme={theme}>{element}</ThemeProvider>
+    <MousePositionProvider>
+      <ThemeProvider theme={theme}>{element}</ThemeProvider>
+    </MousePositionProvider>
   </UserAgentProvider>
 )

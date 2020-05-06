@@ -68,7 +68,7 @@ const Link = styled("a")`
 const Links = styled("div")`
   display: flex;
   width: 80%;
-  max-width: 800px;
+  max-width: 768px;
   justify-content: space-around;
   align-items: center;
 `

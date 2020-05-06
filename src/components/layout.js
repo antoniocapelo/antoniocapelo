@@ -8,13 +8,14 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
 import Header from "./header/"
 import { color, space, typography, layout } from "styled-system"
 import theme from "../theme"
 import "./layout.css"
+import Cursor from "./cursor"
 
 const Main = styled("main")`
   ${space}
@@ -31,6 +32,24 @@ const Layout = ({ children }) => {
       }
     }
   `)
+
+  useEffect(() => {
+    const body = document.body
+    const handleMouseIn = () => {
+      body.classList.add("hover")
+    }
+    const handleMouseOut = () => {
+      body.classList.remove("hover")
+    }
+    const anchors = document.querySelectorAll("a")
+    anchors.forEach(a => a.addEventListener("mouseenter", handleMouseIn))
+    anchors.forEach(a => a.addEventListener("mouseleave", handleMouseOut))
+
+    return () => {
+      anchors.forEach(a => a.removeEventListener("mouseenter", handleMouseIn))
+      anchors.forEach(a => a.removeEventListener("mouseleave", handleMouseOut))
+    }
+  }, [])
 
   const handler = useCallback(
     event => {
@@ -55,6 +74,7 @@ const Layout = ({ children }) => {
           margin={{ 320: "32px", 769: "48px" }}
         />
       )}
+      <Cursor />
       <Header />
       <Main mt={["0px", "0px", theme.layout.headerHeight]}>{children}</Main>
     </>
