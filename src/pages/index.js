@@ -1,13 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
-
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 import Box from "../components/box"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 import Heading from "../components/typography/heading"
-import FullHeight from "../components/full-height"
 import Content from "../layout/content"
+import DraggableArea from "../components/draggable-area"
 
 const IndexPage = () => (
   <Layout>
@@ -50,6 +47,13 @@ const IndexPage = () => (
       <Box>
         <Box py="2" />
         <Heading level={2}>Other projects</Heading>
+        <DraggableArea>
+          <Box py="2">
+            <Heading level={2}>hey hey</Heading>
+            <Heading level={2}>hey hey</Heading>
+            <Heading level={2}>hey hey</Heading>
+          </Box>
+        </DraggableArea>
       </Box>
     </Content>
 

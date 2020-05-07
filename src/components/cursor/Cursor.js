@@ -6,7 +6,7 @@ import useMousePositionContext from "../../providers/mouse-position/useMousePosi
 const Svg = styled("svg")`
   position: fixed;
   mix-blend-mode: difference;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(1);
   z-index: 60;
   pointer-events: none;
   transition: transform ${theme.transitions.durations.fast}ms
@@ -15,10 +15,18 @@ const Svg = styled("svg")`
   circle,
   path {
     stroke: ${theme.colors.primary};
+    transition: opacity ${theme.transitions.durations.fast}ms
+      ${theme.transitions.easings.inOut};
   }
 
-  path {
-    opacity: 0;
+  // path {
+  //   opacity: 0;
+  // }
+
+  body.drag & {
+    path {
+      opacity: 1;
+    }
   }
 
   body.hover & {
@@ -47,7 +55,7 @@ const CursorSvg = ({ style }) => (
         id="main"
         cx="32"
         cy="20"
-        r="19"
+        r="15"
         stroke="#222222"
         strokeWidth="2"
       />

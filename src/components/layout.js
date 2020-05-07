@@ -44,7 +44,6 @@ const Layout = ({ children }) => {
     const anchors = document.querySelectorAll("a")
     anchors.forEach(a => a.addEventListener("mouseenter", handleMouseIn))
     anchors.forEach(a => a.addEventListener("mouseleave", handleMouseOut))
-
     return () => {
       anchors.forEach(a => a.removeEventListener("mouseenter", handleMouseIn))
       anchors.forEach(a => a.removeEventListener("mouseleave", handleMouseOut))

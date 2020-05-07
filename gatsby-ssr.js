@@ -6,16 +6,9 @@
 
 // You can delete this file if you're not using it
 
-import { ThemeProvider } from "emotion-theming"
 import React from "react"
-import UserAgentProvider from "./src/providers/user-agent/UserAgentProvider"
-import theme from "./src/theme"
-import MousePositionProvider from "./src/providers/mouse-position/MousePositionProvider"
+import AppProviders from "./src/providers/app-providers/AppProviders"
 
 export const wrapRootElement = ({ element }) => (
-  <UserAgentProvider>
-    <MousePositionProvider>
-      <ThemeProvider theme={theme}>{element}</ThemeProvider>
-    </MousePositionProvider>
-  </UserAgentProvider>
+  <AppProviders>{element}</AppProviders>
 )
