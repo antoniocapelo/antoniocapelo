@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 import { typography, space, color } from "styled-system"
 
-const CopyBase = styled('p')`
+const CopyBase = styled("p")`
   ${typography}
   ${space}
   ${color}
@@ -15,8 +15,11 @@ const CopyBase = styled('p')`
   }
 `
 
-const Copy = ({ secondary = false, ...props }) => (
-  <CopyBase color={secondary ? "secondary" : "dark"} {...props} />
+const Copy = ({ secondary = false, light = false, ...props }) => (
+  <CopyBase
+    color={secondary ? "secondary" : light ? "primary" : "dark"}
+    {...props}
+  />
 )
 
 export default Copy

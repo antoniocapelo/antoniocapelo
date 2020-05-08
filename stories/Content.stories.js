@@ -21,7 +21,7 @@ const ContentDemo2 = () => (
     alignItems="center"
     bg="primary"
   >
-    <Copy>Some content here</Copy>
+    <Copy>This is a full screen content</Copy>
   </ContentComponent>
 )
 

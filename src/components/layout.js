@@ -8,18 +8,32 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useState, useCallback, useEffect } from "react"
+import React, { useCallback, useEffect, useState } from "react"
+import { space } from "styled-system"
 import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
-import Header from "./header/"
-import { color, space, typography, layout } from "styled-system"
 import theme from "../theme"
-import "./layout.css"
 import Cursor from "./cursor"
+import Header from "./header/"
+import "./layout.css"
+import { HandleMouseOver } from "./cursor/Cursor"
 
 const Main = styled("main")`
   ${space}
 `
+
+function HandleGridDebuggerHotkey(setShowDebugger, showDebugger) {
+  const handler = useCallback(
+    event => {
+      // Update coordinates
+      if (event.ctrlKey && event.key === "l") {
+        setShowDebugger(!showDebugger)
+      }
+    },
+    [setShowDebugger, showDebugger]
+  )
+  useEventListener("keydown", handler)
+}
 
 const Layout = ({ children }) => {
   const [showDebugger, setShowDebugger] = useState(false)
@@ -33,33 +47,9 @@ const Layout = ({ children }) => {
     }
   `)
 
-  useEffect(() => {
-    const body = document.body
-    const handleMouseIn = () => {
-      body.classList.add("hover")
-    }
-    const handleMouseOut = () => {
-      body.classList.remove("hover")
-    }
-    const anchors = document.querySelectorAll("a")
-    anchors.forEach(a => a.addEventListener("mouseenter", handleMouseIn))
-    anchors.forEach(a => a.addEventListener("mouseleave", handleMouseOut))
-    return () => {
-      anchors.forEach(a => a.removeEventListener("mouseenter", handleMouseIn))
-      anchors.forEach(a => a.removeEventListener("mouseleave", handleMouseOut))
-    }
-  }, [])
+  HandleMouseOver()
 
-  const handler = useCallback(
-    event => {
-      // Update coordinates
-      if (event.ctrlKey && event.key === "l") {
-        setShowDebugger(!showDebugger)
-      }
-    },
-    [setShowDebugger, showDebugger]
-  )
-  useEventListener("keydown", handler)
+  HandleGridDebuggerHotkey(setShowDebugger, showDebugger)
 
   return (
     <>

@@ -1,42 +1,168 @@
 import styled from "@emotion/styled"
-import React, { useEffect } from "react"
+import { keyframes } from "@emotion/core"
+import React, { useEffect, useState, useRef } from "react"
 import theme from "../../theme"
 import useMousePositionContext from "../../providers/mouse-position/useMousePositionContext"
 
+const shrink = keyframes`
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0.8);
+  }
+`
+
+export function HandleMouseOver() {
+  useEffect(() => {
+    const body = document.body
+    const handleMouseIn = e => {
+      if (e.target.tagName === "A") {
+        body.classList.add(classNames.hover)
+      }
+
+      if (e.target.dataset.draggable) {
+        body.classList.add(classNames.drag)
+      }
+    }
+    const handleMouseOut = e => {
+      if (e.target.tagName === "A") {
+        body.classList.remove(classNames.hover)
+      }
+      if (e.target.dataset.draggable) {
+        body.classList.remove(classNames.drag)
+      }
+    }
+
+    document.body.addEventListener("mouseenter", handleMouseIn, true)
+    document.body.addEventListener("mouseleave", handleMouseOut, true)
+
+    return () => {
+      document.body.removeEventListener("mouseenter", handleMouseIn, true)
+      document.body.removeEventListener("mouseleave", handleMouseOut, true)
+    }
+  }, [])
+}
+
+const classNames = {
+  mouseDown: "mousedown",
+  mouseDownDone: "mousedown-done",
+  hover: "hover",
+  drag: "drag",
+}
+
+function HandleMouseClick() {
+  // const mouseDownTimeoutRef = useRef(null);
+  // const mouseDownTimeoutRef = useRef(null);
+  const eventNames = [
+    "transitionend",
+    "webkitTransitionEnd",
+    "oTransitionEnd",
+    "otransitionend",
+    "MSTransitionEnd",
+  ]
+
+  useEffect(() => {
+    const mouseDownHandler = e => {
+      if (body.classList.contains(classNames.mouseDown)) {
+        body.classList.add(classNames.mouseDownDone)
+      }
+    }
+    eventNames.forEach(eventName =>
+      window.addEventListener(eventName, mouseDownHandler)
+    )
+    const body = document.body
+    const handleMouseDown = () => {
+      body.classList.add(classNames.mouseDown)
+    }
+    const handleMouseUp = () => {
+      if (body.classList.contains(classNames.mouseDownDone)) {
+        body.classList.remove(classNames.mouseDown, classNames.mouseDownDone)
+      } else {
+        requestAnimationFrame(handleMouseUp)
+      }
+    }
+    body.addEventListener("mousedown", handleMouseDown)
+    body.addEventListener("mouseup", handleMouseUp)
+    return () => {
+      body.removeEventListener("mousedown", handleMouseDown)
+      body.removeEventListener("mouseup", handleMouseUp)
+    }
+  }, [])
+}
+
 const Svg = styled("svg")`
+  --arrow-movement: 4px;
   position: fixed;
   mix-blend-mode: difference;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-41%, -25%);
   z-index: 60;
+  overflow: visible;
   pointer-events: none;
   transition: transform ${theme.transitions.durations.fast}ms
     ${theme.transitions.easings.inOut};
 
-  circle,
   path {
     stroke: ${theme.colors.primary};
-    transition: opacity ${theme.transitions.durations.fast}ms
+    transition: opacity ${theme.transitions.durations.normal}ms
+        ${theme.transitions.easings.inOut},
+      transform ${theme.transitions.durations.normal}ms
+        ${theme.transitions.easings.inOut};
+  }
+
+  circle {
+    transform-origin: center;
+    stroke: ${theme.colors.primary};
+    transition: transform ${theme.transitions.durations.fast}ms
       ${theme.transitions.easings.inOut};
   }
 
-  // path {
-  //   opacity: 0;
-  // }
+  path {
+    opacity: 0;
+    transform: translateX(var(--arrow-movement));
+  }
+  path:nth-of-type(2) {
+    transform: translateX(calc(-1 * var(--arrow-movement)));
+  }
 
   body.drag & {
     path {
       opacity: 1;
+      transform: translateX(0px);
     }
   }
 
   body.hover & {
-    transform: translate(-50%, -50%) scale(1.1);
+    circle {
+      transform: scale(1.3);
+    }
   }
+
   body.hover.mousedown & {
-    transform: translate(-50%, -50%) scale(0.8);
+    circle {
+      // animation: ${shrink} 1s ease-out forwards;
+      transform: scale(0.9);
+    }
   }
+
   body.mousedown & {
-    transform: translate(-50%, -50%) scale(0.6);
+    circle {
+      transform: scale(0.7);
+      // animation: ${shrink} 1s ease-out forwards;
+    }
+  }
+
+  body.drag.mousedown & {
+    circle {
+      transform: scale(1);
+    }
+    path {
+      transform: translateX(calc(-1 * var(--arrow-movement)));
+    }
+    path:nth-of-type(2) {
+      transform: translateX(var(--arrow-movement));
+    }
   }
 `
 
@@ -53,21 +179,21 @@ const CursorSvg = ({ style }) => (
     <g id="cursor">
       <circle
         id="main"
-        cx="32"
-        cy="20"
-        r="15"
+        cx="28"
+        cy="15"
+        r="14"
         stroke="#222222"
         strokeWidth="2"
       />
       <g id="arrows">
         <path
           id="arrow-left"
-          d="M9.25 26.7544L0.800752 20L9.25 13.2456V26.7544Z"
+          d="M9.25 21.7544L0.800752 15L9.25 8.2456V21.7544Z"
           stroke="#222222"
         />
         <path
           id="arrow-right"
-          d="M54.75 26.7544L63.1992 20L54.75 13.2456V26.7544Z"
+          d="M46.75 21.7544L55.1992 15L46.75 8.2456V21.7544Z"
           stroke="#222222"
         />
       </g>
@@ -77,24 +203,22 @@ const CursorSvg = ({ style }) => (
 
 const Cursor = () => {
   const [x, y] = useMousePositionContext()
-
+  const [hasTouch, setHasTouch] = useState(false)
   useEffect(() => {
-    const body = document.body
-    const handleClick = () => {
-      body.classList.add("mousedown")
-    }
-    const handleMouseOut = () => {
-      body.classList.remove("mousedown")
+    function browserSupportsTouchEvents() {
+      return (
+        "ontouchstart" in window || "onmsgesturechange" in window // works on most browsers
+      ) // works on IE10 with some false positives
     }
 
-    body.addEventListener("mousedown", handleClick)
-    body.addEventListener("mouseup", handleMouseOut)
-
-    return () => {
-      body.removeEventListener("mousedown", handleClick)
-      body.removeEventListener("mouseup", handleMouseOut)
-    }
+    setHasTouch(browserSupportsTouchEvents())
   }, [])
+
+  HandleMouseClick()
+
+  if (hasTouch) {
+    return null
+  }
 
   return (
     <CursorSvg

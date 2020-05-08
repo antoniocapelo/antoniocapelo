@@ -3,6 +3,7 @@ import { navigate } from "@reach/router"
 import React from "react"
 import { color, space, typography, layout } from "styled-system"
 import theme from "../../theme"
+import Content from "../../layout/content"
 
 const Wrapper = styled("header")`
   ${layout}
@@ -69,29 +70,31 @@ const Links = styled("div")`
   display: flex;
   width: 80%;
   max-width: 768px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `
 
 const Header = ({ secondary = false, current, onClick, ...props }) => {
   return (
     <Wrapper bg="dark" display={["none", "none", "flex"]}>
-      <Links>
-        {items.map(({ label, path }) => (
-          <Link
-            key={path}
-            onClick={() => {
-              navigate(path)
-              onClick && onClick(path)
-            }}
-            fontSize="2.4rem"
-            color="primary"
-            href={path}
-          >
-            {label}
-          </Link>
-        ))}
-      </Links>
+      <Content width="100%" justifyContent="flex-end">
+        <Links>
+          {items.map(({ label, path }) => (
+            <Link
+              key={path}
+              onClick={() => {
+                navigate(path)
+                onClick && onClick(path)
+              }}
+              fontSize="2.4rem"
+              color="primary"
+              href={path}
+            >
+              {label}
+            </Link>
+          ))}
+        </Links>
+      </Content>
     </Wrapper>
   )
 }

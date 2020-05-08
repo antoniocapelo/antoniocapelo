@@ -34,8 +34,13 @@ export const Headings = () => (
 
 export const Copy = () => (
   <Box py="4" width={400}>
-      <CopyComponent py="4">Copy text</CopyComponent>
-      <CopyComponent pb="4" secondary>Copy text - secondary variant</CopyComponent>
+    <CopyComponent py="4">Copy text</CopyComponent>
+    <CopyComponent pb="4" secondary>
+      Copy text - secondary variant
+    </CopyComponent>
+    <CopyComponent pb="4" light>
+      Light Copy text
+    </CopyComponent>
   </Box>
 )
 

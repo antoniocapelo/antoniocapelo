@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 const MousePositionContext = React.createContext()
 
 function useMousePosition() {
-  const [mousePosition, setMousePosition] = useState([0, 0])
+  const [mousePosition, setMousePosition] = useState([-60, -60])
 
   const handleMousePosition = e => setMousePosition([e.clientX, e.clientY])
 
