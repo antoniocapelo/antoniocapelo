@@ -4,13 +4,16 @@ import DraggableAreaProvider from "../draggable-area-provider/DraggableAreaProvi
 import MousePositionProvider from "../mouse-position/MousePositionProvider"
 import UserAgentProvider from "../user-agent/UserAgentProvider"
 import theme from "../../theme"
+import WindowSizeProvider from "../window-size-provider/WindowSizeProvider"
 
 export default ({ children }) => (
   <UserAgentProvider>
     <MousePositionProvider>
-      <DraggableAreaProvider>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
-      </DraggableAreaProvider>
+      <WindowSizeProvider>
+        <DraggableAreaProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </DraggableAreaProvider>
+      </WindowSizeProvider>
     </MousePositionProvider>
   </UserAgentProvider>
 )

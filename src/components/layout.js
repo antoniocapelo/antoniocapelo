@@ -16,7 +16,6 @@ import theme from "../theme"
 import Cursor from "./cursor"
 import Header from "./header/"
 import "./layout.css"
-import { HandleMouseOver } from "./cursor/Cursor"
 
 const Main = styled("main")`
   ${space}
@@ -46,8 +45,6 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
-  HandleMouseOver()
 
   HandleGridDebuggerHotkey(setShowDebugger, showDebugger)
 
