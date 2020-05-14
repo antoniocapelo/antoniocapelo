@@ -1,6 +1,4 @@
 import React from "react"
-import styled from "@emotion/styled"
-import { color, layout, space } from "styled-system"
 import Box from "../components/box"
 import Carousel from "../components/carousel/Carousel"
 import Layout from "../components/layout"
@@ -12,24 +10,6 @@ import theme from "../theme"
 
 const spacing = theme.space[6]
 
-const Li = styled("li")`
-${space} 
-${color}
-${layout}
-user-select: none;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-left: ${spacing}px;
-transform: skewX(var(--skew-amount));
-&:last-of-type {
-    margin-right ${spacing}px;
-}
-& > * {
-  transition: transform 0.15s ease;
-  transform: scale(calc(1 + 0.3 * var(--dragging)));
-}
-`
 const obj = {
   target: "",
   label: "ye",
@@ -43,7 +23,7 @@ const IndexPage = () => (
     <Box bg="primary" pt="9">
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (
-          <Li bg="dark" width="200px" height="200px" key={`${target}-${idx}`}>
+          <Box bg="dark" width="200px" height="200px" key={`${target}-${idx}`}>
             <div
               style={{
                 width: "100%",
@@ -55,7 +35,25 @@ const IndexPage = () => (
             >
               <Copy light>{idx + 1}</Copy>
             </div>
-          </Li>
+          </Box>
+        ))}
+      </Carousel>
+      <Box pt="9"></Box>
+      <Carousel spacing={spacing} rtl>
+        {items.map(({ target }, idx) => (
+          <Box bg="dark" width="200px" height="200px" key={`${target}-${idx}`}>
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Copy light>{idx + 1}</Copy>
+            </div>
+          </Box>
         ))}
       </Carousel>
     </Box>

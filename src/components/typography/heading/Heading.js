@@ -1,6 +1,6 @@
-import React from "react"
 import styled from "@emotion/styled"
-import { typography, space, color } from "styled-system"
+import React from "react"
+import { color, space, typography } from "styled-system"
 
 const Heading1 = styled("h1")`
   ${typography}

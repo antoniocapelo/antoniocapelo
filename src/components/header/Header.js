@@ -59,9 +59,9 @@ const Link = styled("a")`
     content: "";
     position: absolute;
     width: 100px;
-    height: 3px;
+    height: 2px;
     background: ${theme.colors.primary};
-    bottom: -7px;
+    bottom: -5px;
     left: 0;
   }
 `

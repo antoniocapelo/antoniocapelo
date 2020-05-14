@@ -12,6 +12,7 @@ const ContentBase = styled("section")`
   display: flex;
   scroll-margin: ${theme.layout.headerHeight}px;
   box-sizing: border-box;
+  position: relative;
   min-height: ${({ isIos, fullHeight }) =>
     fullHeight
       ? isIos
@@ -21,6 +22,17 @@ const ContentBase = styled("section")`
         : `calc(100vh - ${theme.layout.headerHeight}px)`
       : "0px"};
 
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+    left: 50%;
+    background: inherit;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
   @media (max-width: ${theme.breakpoints.md}) {
     min-height: ${({ isIos, fullHeight }) =>
       fullHeight

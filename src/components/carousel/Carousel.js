@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
-import { useSpring, animated, config } from "react-spring"
 import React, { Children, useEffect, useRef, useState } from "react"
+import { animated, useSpring } from "react-spring"
 import { useDrag } from "react-use-gesture"
 import { layout } from "styled-system"
 import useWindowSizeContext from "../../providers/window-size-provider/useWindowSizeContext"
@@ -13,13 +13,32 @@ const StyledUl = styled(animated.ul)`
   --dragging: 0;
   display: flex;
   list-style-type: none;
+  flex-direction: ${({ rtl }) => (rtl ? "row-reverse" : "row")};
   margin: 0;
   padding: 0;
 `
-
 const Ul = animated(StyledUl)
 
-const Carousel = ({ children, spacing = 20 }) => {
+const Li = styled("li")`
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: ${props => props.spacing}px;
+  transform: skewX(var(--skew-amount));
+  &:first-of-type {
+    margin-right: ${({ rtl, spacing }) => (rtl ? spacing : 0)}px;
+  }
+  &:last-of-type {
+    margin-right: ${({ rtl, spacing }) => (rtl ? 0 : spacing)}px;
+  }
+  & > * {
+    transition: transform 0.15s ease;
+    transform: scale(calc(1 + 0.3 * var(--dragging)));
+  }
+`
+
+const Carousel = ({ children, spacing = 20, rtl = false }) => {
   const [carouselWidth, setWidth] = useState(initialWidth)
   const [style, set] = useSpring(() => ({
     transform: "translate3d(0px,0,0)",
@@ -36,10 +55,15 @@ const Carousel = ({ children, spacing = 20 }) => {
     },
     {
       axis: "x",
-      bounds: {
-        left: -1 * (carouselWidth - window.innerWidth),
-        right: 0,
-      },
+      bounds: rtl
+        ? {
+            right: 1 * (carouselWidth - window.innerWidth + spacing),
+            left: 0,
+          }
+        : {
+            left: -1 * (carouselWidth - window.innerWidth + spacing),
+            right: 0,
+          },
     }
   )
 
@@ -58,15 +82,26 @@ const Carousel = ({ children, spacing = 20 }) => {
   }, [windowSize.width])
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div
+      style={{
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: rtl ? "flex-end" : "flex-start",
+      }}
+    >
       <Ul
+        rtl={rtl}
         data-draggable
         {...bind()}
         ref={ref}
         width={`${carouselWidth}px`}
         style={style}
       >
-        {children}
+        {Children.map(children, (el, idx) => (
+          <Li spacing={spacing} key={idx} rtl={rtl}>
+            {el}
+          </Li>
+        ))}
       </Ul>
     </div>
   )
