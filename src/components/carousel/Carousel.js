@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import anime from "animejs/lib/anime.es.js"
+import { useSpring, animated } from "react-spring"
 import React, { Children, useEffect, useRef, useState } from "react"
 import { useDrag } from "react-use-gesture"
 import { layout } from "styled-system"
@@ -7,7 +7,7 @@ import useWindowSizeContext from "../../providers/window-size-provider/useWindow
 
 const initialWidth = 10000
 
-const Ul = styled("ul")`
+const StyledUl = styled(animated.ul)`
   ${layout}
   --skew-amount: 0deg;
   --dragging: 0;
@@ -17,30 +17,20 @@ const Ul = styled("ul")`
   padding: 0;
 `
 
+const Ul = animated(StyledUl)
+
 const Carousel = ({ children, spacing = 20 }) => {
   const [carouselWidth, setWidth] = useState(initialWidth)
+  const [style, set] = useSpring(() => ({
+    transform: "translate3d(0px,0,0)",
+  }))
   const ref = useRef()
-  const animeInstance = useRef(null)
   const windowSize = useWindowSizeContext()
 
   const bind = useDrag(
-    ({ offset: [x], down, vxvy: [vx] }) => {
-      if (!down) {
-        ref.current.style.setProperty("--dragging", 0)
-      }
-
-      animeInstance.current = anime({
-        targets: ref.current,
-        translateX: x,
-        duration: 1000,
-        easing: "easeOutQuad",
-        begin: function (anim) {
-          ref.current.style.setProperty("--dragging", 1)
-        },
-        complete: function (anim) {
-          anime.running.length === 1 &&
-            ref.current.style.setProperty("--dragging", 0)
-        },
+    ({ offset: [mx, my] }) => {
+      set({
+        transform: `translate3d(${mx}px,0,0)`,
       })
     },
     {
@@ -68,7 +58,13 @@ const Carousel = ({ children, spacing = 20 }) => {
 
   return (
     <div style={{ overflow: "hidden" }}>
-      <Ul data-draggable {...bind()} ref={ref} width={`${carouselWidth}px`}>
+      <Ul
+        data-draggable
+        {...bind()}
+        ref={ref}
+        width={`${carouselWidth}px`}
+        style={style}
+      >
         {children}
       </Ul>
     </div>

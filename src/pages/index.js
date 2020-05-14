@@ -49,8 +49,8 @@ const IndexPage = () => (
                 width: "100%",
                 height: "100%",
                 display: "flex",
-                "align-items": "center",
-                "justify-content": "center",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Copy light>{idx + 1}</Copy>
