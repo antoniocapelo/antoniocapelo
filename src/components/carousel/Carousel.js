@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useSpring, animated } from "react-spring"
+import { useSpring, animated, config } from "react-spring"
 import React, { Children, useEffect, useRef, useState } from "react"
 import { useDrag } from "react-use-gesture"
 import { layout } from "styled-system"
@@ -23,6 +23,7 @@ const Carousel = ({ children, spacing = 20 }) => {
   const [carouselWidth, setWidth] = useState(initialWidth)
   const [style, set] = useSpring(() => ({
     transform: "translate3d(0px,0,0)",
+    config: { mass: 1, tension: 90, friction: 14 },
   }))
   const ref = useRef()
   const windowSize = useWindowSizeContext()
