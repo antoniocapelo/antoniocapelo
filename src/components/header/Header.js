@@ -1,9 +1,9 @@
 import styled from "@emotion/styled"
 import { navigate } from "@reach/router"
 import React from "react"
-import { color, space, typography, layout } from "styled-system"
-import theme from "../../theme"
+import { color, layout, space, typography } from "styled-system"
 import Content from "../../layout/content"
+import theme from "../../theme"
 
 const Wrapper = styled("header")`
   ${layout}
@@ -77,7 +77,7 @@ const Links = styled("div")`
 const Header = ({ secondary = false, current, onClick, ...props }) => {
   return (
     <Wrapper bg="dark" display={["none", "none", "flex"]}>
-      <Content width="100%" justifyContent="flex-end">
+      <Content width="100%" justifyContent="flex-end" display="flex">
         <Links>
           {items.map(({ label, path }) => (
             <Link

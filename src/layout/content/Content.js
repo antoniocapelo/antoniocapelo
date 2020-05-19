@@ -1,15 +1,14 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { color, layout, space, flexbox } from "styled-system"
-import theme from "../../theme"
+import { color, flexbox, layout, space } from "styled-system"
 import useUserAgent from "../../providers/user-agent/useUserAgent"
+import theme from "../../theme"
 
 const ContentBase = styled("section")`
   ${layout}
   ${space}
   ${flexbox}
   ${color}
-  display: flex;
   scroll-margin: ${theme.layout.headerHeight}px;
   box-sizing: border-box;
   position: relative;

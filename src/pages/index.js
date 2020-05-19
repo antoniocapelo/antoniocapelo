@@ -2,6 +2,7 @@ import React from "react"
 import Box from "../components/box"
 import Carousel from "../components/carousel/Carousel"
 import Layout from "../components/layout"
+import SectionTitle from "../components/section-title/SectionTitle"
 import SEO from "../components/seo"
 import Copy from "../components/typography/copy"
 import Heading from "../components/typography/heading"
@@ -79,9 +80,9 @@ const IndexPage = () => (
     >
       <Box>
         <Box py="2" />
-        <Heading color="primary" level={2}>
-          Experience
-        </Heading>
+        <SectionTitle color="primary" textAlign="right">
+          Recent work
+        </SectionTitle>
         <Copy light mt="2">
           <a href="">a link</a>
         </Copy>

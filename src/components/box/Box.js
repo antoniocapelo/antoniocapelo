@@ -1,9 +1,10 @@
 import styled from "@emotion/styled"
-import { typography, space, color, layout } from "styled-system"
+import { color, flexbox, layout, space, typography } from "styled-system"
 
 const Box = styled("div")`
 ${typography}
 ${space} 
+${flexbox} 
 ${color}
 ${layout}`
 

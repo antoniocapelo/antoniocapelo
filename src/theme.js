@@ -45,6 +45,11 @@ const transitions = {
 const layout = {
   headerHeight: space[8],
   iosBottomBarHeight: 75,
+  grid: {
+    margin: ["3.2rem", "4.8rem"],
+    numCols: [6, 12],
+    gutter: 24,
+  },
 }
 
 const theme = {

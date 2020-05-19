@@ -8,7 +8,7 @@
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useState } from "react"
 import { space } from "styled-system"
 import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
@@ -25,7 +25,7 @@ function HandleGridDebuggerHotkey(setShowDebugger, showDebugger) {
   const handler = useCallback(
     event => {
       // Update coordinates
-      if (event.ctrlKey && event.key === "l") {
+      if (event.ctrlKey && event.key === "g") {
         setShowDebugger(!showDebugger)
       }
     },
