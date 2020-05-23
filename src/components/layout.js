@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
           maxWidth={theme.maxContentWidth}
           theme={theme}
           numCols={{ 320: 6, 769: 12 }}
-          gutter={{ 320: "16px" }}
+          gutter={{ 320: "24px" }}
           margin={{ 320: "32px", 769: "48px" }}
         />
       )}

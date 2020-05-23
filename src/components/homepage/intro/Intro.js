@@ -6,7 +6,7 @@ import IntroText from "../intro-text"
 
 const Intro = ({ fullHeight, ...props }) => {
   return (
-    <Content bg="dark" py={[6, 8, 9]}>
+    <Content bg="dark" py={[6, 8, 9]} data-scroll-section>
       <Row pt="15.5vw">
         <Col size={[1, 1, 9 / 12]} ml={["0%", "0%", "25%"]}>
           <IntroText pb={[4, 5, 7]}>
@@ -14,7 +14,7 @@ const Intro = ({ fullHeight, ...props }) => {
           </IntroText>
           <IntroText>
             I work mostly on the front-end stack, creating{" "}
-            <span>performant</span> applications which are <span>pleasant</span>
+            <span>performant</span> applications which are <span>pleasant</span>{" "}
             to use.
           </IntroText>
         </Col>
