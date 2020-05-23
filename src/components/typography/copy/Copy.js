@@ -9,6 +9,13 @@ const CopyBase = styled("p")`
   ${color}
   font-family: ${theme.fonts.copy};
   transform: translateY(${0.11}em);
+  line-height: 1.3;
+
+
+  > span {
+      color: ${theme.colors.secondary}
+  }
+
   &:before {
     content: "";
     margin-top: -${0.09}em;
@@ -19,7 +26,7 @@ const CopyBase = styled("p")`
 
 const Copy = ({ secondary = false, light = false, ...props }) => (
   <CopyBase
-    fontSize="sm"
+    fontSize={["xs", "xs", "sm"]}
     color={secondary ? "secondary" : light ? "primary" : "dark"}
     {...props}
   />

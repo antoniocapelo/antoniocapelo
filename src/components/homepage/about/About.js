@@ -12,21 +12,23 @@ const Intro = ({ fullHeight, ...props }) => {
         <Col size={[1, 0.5, 5 / 12]}>
           <Image />
         </Col>
-        <Col size={[1, 0.5, 6 / 12]} alignSelf="center" ml={[0, 0, "8.33333%"]}>
+        <Col size={[1, 0.5, 6 / 12]} alignSelf="center" ml={[0, 0, 0]}>
           <Copy mb="4">
             With almost a decade of web development experience, I consider
-            myself a creative engineer who’s efficient in delivering
-            high-quality products.
+            myself a <span>creative engineer</span> who’s efficient in
+            delivering high-quality products.
           </Copy>
 
           <Copy mb="4">
-            I’m focused on the end-user and in providing the best possible
-            experience when interacting with the UI.
+            I’m focused on the <span>end-user</span> and in providing the best
+            possible experience when interacting with the UI.
           </Copy>
 
           <Copy>
-            I work mostly with TypeScript, React, CSS and WebGL but I’m also
-            versed in back-end solutions, CI/CD and testing.
+            I work mostly with <span>TypeScript</span>, <span>React</span>,{" "}
+            <span>CSS</span> and <span>WebGL</span> but I’m also versed in{" "}
+            <span>back-end</span> solutions, <span>CI/CD</span> and{" "}
+            <span>testing</span>.
           </Copy>
         </Col>
       </Row>

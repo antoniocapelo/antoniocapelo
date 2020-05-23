@@ -21,7 +21,7 @@ const fonts = {
   // copy: "Porpora",
 }
 
-const fontSizes = ["2rem", "2.8rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
+const fontSizes = ["2rem", "2.4rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
 fontSizes.xs = fontSizes[0]
 fontSizes.sm = fontSizes[1]
 fontSizes.md = fontSizes[2]
