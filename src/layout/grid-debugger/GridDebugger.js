@@ -123,6 +123,8 @@ const Grid = styled.div`
 
 const GridDebugger = ({ theme, gutter, margin, maxWidth, numCols }) => {
   const marginObject = getGridProperty(margin, theme)
+  console.log({ marginObject })
+
   const guttersObject = getGridProperty(gutter, theme)
   const cols = getGridProperty(numCols, theme, "cols")
   const maxWidthObj = maxWidth

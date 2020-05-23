@@ -1,6 +1,7 @@
 import React from "react"
 import Box from "../components/box"
 import Carousel from "../components/carousel/Carousel"
+import About from "../components/homepage/about"
 import Intro from "../components/homepage/intro"
 import Layout from "../components/layout"
 import SectionTitle from "../components/section-title/SectionTitle"
@@ -23,6 +24,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Intro />
+    <About />
     <Box bg="primary" pt="9">
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (

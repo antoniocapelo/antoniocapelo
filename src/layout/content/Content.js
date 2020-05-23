@@ -9,7 +9,7 @@ const ContentBase = styled("section")`
   ${space}
   ${flexbox}
   ${color}
-  scroll-margin: ${theme.layout.headerHeight}px;
+  scroll-margin: ${theme.layout.headerHeight - 1}px;
   box-sizing: border-box;
   position: relative;
   min-height: ${({ isIos, fullHeight }) =>

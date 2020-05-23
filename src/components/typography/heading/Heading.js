@@ -1,11 +1,13 @@
 import styled from "@emotion/styled"
 import React from "react"
 import { color, space, typography } from "styled-system"
+import theme from "../../../theme"
 
 const Heading1 = styled("h1")`
   ${typography}
   ${space}
   ${color}
+  font-family: ${theme.fonts.heading};
   transform: translateY(${0.11}em);
   &:before {
     content: "";
