@@ -1,6 +1,7 @@
 import React from "react"
 import Box from "../components/box"
 import Carousel from "../components/carousel/Carousel"
+import Intro from "../components/homepage/intro"
 import Layout from "../components/layout"
 import SectionTitle from "../components/section-title/SectionTitle"
 import SEO from "../components/seo"
@@ -21,6 +22,7 @@ const items = [obj, obj, obj, obj, obj, obj, obj, obj]
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
+    <Intro />
     <Box bg="primary" pt="9">
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (
