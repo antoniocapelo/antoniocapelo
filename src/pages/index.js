@@ -25,7 +25,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <Intro />
     <About />
-    <Box bg="primary" pt="9">
+    <Box bg="primary" pt="9" data-scroll-section>
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (
           <Box bg="dark" width="200px" height="200px" key={`${target}-${idx}`}>
@@ -64,8 +64,8 @@ const IndexPage = () => (
     </Box>
     <Content
       fullHeight
+      data-scroll-section
       bg="primary"
-      id="about"
       justifyContent="center"
       alignItems="center"
     >
@@ -76,6 +76,7 @@ const IndexPage = () => (
     </Content>
 
     <Content
+      data-scroll-section
       fullHeight
       bg="dark"
       justifyContent="center"
@@ -94,6 +95,7 @@ const IndexPage = () => (
     </Content>
 
     <Content
+      data-scroll-section
       p="4"
       fullHeight
       bg="primary"
@@ -118,6 +120,7 @@ const IndexPage = () => (
     </Content>
 
     <Content
+      data-scroll-section
       fullHeight
       bg="dark"
       justifyContent="center"

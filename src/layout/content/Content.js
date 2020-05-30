@@ -28,6 +28,7 @@ const ContentBase = styled("section")`
     height: 100%;
     width: 100vw;
     left: 50%;
+    top: 0;
     background: inherit;
     transform: translateX(-50%);
     z-index: -1;

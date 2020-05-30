@@ -7,6 +7,7 @@
 
 import styled from "@emotion/styled"
 import { graphql, useStaticQuery } from "gatsby"
+import "locomotive-scroll/dist/locomotive-scroll.css"
 import PropTypes from "prop-types"
 import React, { useCallback, useState } from "react"
 import { space } from "styled-system"

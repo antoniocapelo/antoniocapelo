@@ -1,9 +1,9 @@
 import styled from "@emotion/styled"
 import React from "react"
-import img from "../../../images/profile-pic.jpg"
 import Col from "../../../layout/col/Col"
 import Content from "../../../layout/content"
 import Row from "../../../layout/row"
+import Image from "../../image"
 import Copy from "../../typography/copy"
 
 const Bg = styled.div`
@@ -13,20 +13,53 @@ const Bg = styled.div`
   opacity: 0.75;
   // mix-blend-mode: multiply;
   background-image: url(${props => props.img});
+  transform: translate3d(0, 0, 0);
+  height: 95vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+`
+
+const BgWrapper = styled(Col)`
+  position: relative;
+  // // overflow: hidden;
+  // width: calc(41.66666666666667% - 30px);
+`
+
+const ImageWrapper = styled(Image)`
+  // position: absolute;
+  // top: 0;
+  // left: 12px;
+  // right: 12px;
+  height: 95vh;
+  max-height: 600px;
 `
 
 const About = ({ fullHeight, ...props }) => {
   return (
     <Content py={[6, 8, 9]} bg="primary" data-scroll-section>
-      <Row space={4}>
-        <Col size={[1, 0.5, 5 / 12]} data-scroll-speed="2" data-scroll>
-          <Bg img={img} />
-        </Col>
+      <Row space={4} style={{ overflow: "hidden" }}>
+        <BgWrapper size={[1, 0.5, 5 / 12]}>
+          <div
+            data-scroll-speed="-3"
+            data-scroll
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 12,
+              right: 12,
+              bottom: 0,
+            }}
+          >
+            <ImageWrapper />
+          </div>
+          {/* <Bg img={img} data-scroll-speed="-2" data-scroll /> */}
+        </BgWrapper>
         <Col
-          size={[1, 0.5, 6 / 12]}
+          size={[1, 6 / 12, 7 / 12, 6 / 12]}
           alignSelf="center"
-          ml={[0, 0, 0]}
-          data-scroll-speed="1"
+          py={[2, 2, 4, 4]}
         >
           <Copy mb="4">
             With almost a decade of web development experience, I consider

@@ -87,6 +87,8 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
         overflow: "hidden",
         display: "flex",
         justifyContent: rtl ? "flex-end" : "flex-start",
+        maxWidth: 1440,
+        margin: "0 auto",
       }}
     >
       <Ul

@@ -13,7 +13,7 @@ import React from "react"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image = () => {
+const Image = props => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "profile-pic.jpg" }) {
@@ -26,7 +26,13 @@ const Image = () => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      {...props}
+      data-cenas="true"
+    />
+  )
 }
 
 export default Image
