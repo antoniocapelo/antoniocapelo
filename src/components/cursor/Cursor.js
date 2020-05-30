@@ -1,8 +1,8 @@
-import styled from "@emotion/styled"
 import { keyframes } from "@emotion/core"
-import React, { useEffect, useState, useRef } from "react"
-import theme from "../../theme"
+import styled from "@emotion/styled"
+import React, { useEffect, useState } from "react"
 import useMousePositionContext from "../../providers/mouse-position/useMousePositionContext"
+import theme from "../../theme"
 
 const shrink = keyframes`
   from {
