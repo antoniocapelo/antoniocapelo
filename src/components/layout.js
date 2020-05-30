@@ -6,7 +6,7 @@
  */
 
 import styled from "@emotion/styled"
-import { graphql, useStaticQuery } from "gatsby"
+// import { graphql, useStaticQuery } from "gatsby"
 import "locomotive-scroll/dist/locomotive-scroll.css"
 import PropTypes from "prop-types"
 import React, { useCallback, useState } from "react"
@@ -37,15 +37,15 @@ function HandleGridDebuggerHotkey(setShowDebugger, showDebugger) {
 
 const Layout = ({ children }) => {
   const [showDebugger, setShowDebugger] = useState(false)
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   HandleGridDebuggerHotkey(setShowDebugger, showDebugger)
 

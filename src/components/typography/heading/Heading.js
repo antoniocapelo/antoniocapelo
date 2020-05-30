@@ -39,17 +39,19 @@ const Heading6 = Heading4.withComponent("h6")
 const Heading = ({ level = 1, fontFamily = "heading", ...props }) => {
   switch (level) {
     case 1:
-      return <Heading1 fontSize="xxl" m="0" {...props} />
+      return (
+        <Heading1 fontFamily={fontFamily} fontSize="xxl" m="0" {...props} />
+      )
     case 2:
-      return <Heading2 fontSize="xl" m="0" {...props} />
+      return <Heading2 fontFamily={fontFamily} fontSize="xl" m="0" {...props} />
     case 3:
-      return <Heading3 fontSize="lg" m="0" {...props} />
+      return <Heading3 fontFamily={fontFamily} fontSize="lg" m="0" {...props} />
     case 4:
-      return <Heading4 fontSize="sm" m="0" {...props} />
+      return <Heading4 fontFamily={fontFamily} fontSize="sm" m="0" {...props} />
     case 5:
-      return <Heading5 fontSize="sm" m="0" {...props} />
+      return <Heading5 fontFamily={fontFamily} fontSize="sm" m="0" {...props} />
     case 6:
-      return <Heading5 fontSize="sm" m="0" {...props} />
+      return <Heading6 fontFamily={fontFamily} fontSize="sm" m="0" {...props} />
     default:
       return null
   }

@@ -6,37 +6,16 @@ import Row from "../../../layout/row"
 import Image from "../../image"
 import Copy from "../../typography/copy"
 
-const Bg = styled.div`
-  height: 100%;
-  background-size: cover;
-  background-position: top center;
-  opacity: 0.75;
-  // mix-blend-mode: multiply;
-  background-image: url(${props => props.img});
-  transform: translate3d(0, 0, 0);
-  height: 95vh;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-`
-
 const BgWrapper = styled(Col)`
   position: relative;
-  // // overflow: hidden;
-  // width: calc(41.66666666666667% - 30px);
 `
 
 const ImageWrapper = styled(Image)`
-  // position: absolute;
-  // top: 0;
-  // left: 12px;
-  // right: 12px;
   height: 95vh;
   max-height: 600px;
 `
 
-const About = ({ fullHeight, ...props }) => {
+const About = () => {
   return (
     <Content py={[6, 8, 9]} bg="primary" data-scroll-section>
       <Row space={4} style={{ overflow: "hidden" }}>

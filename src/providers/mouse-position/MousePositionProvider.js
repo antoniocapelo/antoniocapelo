@@ -21,7 +21,7 @@ function useMousePosition() {
   return mousePosition
 }
 
-export default ({ children }) => {
+const MousePositionProvider = ({ children }) => {
   const mousePosition = useMousePosition()
 
   return (
@@ -32,3 +32,4 @@ export default ({ children }) => {
 }
 
 export { MousePositionContext }
+export default MousePositionProvider

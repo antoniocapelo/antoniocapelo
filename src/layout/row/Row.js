@@ -3,13 +3,11 @@ import Box from "../../components/box"
 import theme from "../../theme"
 
 const Row = ({ children, space = [0], ...props }) => {
-  console.log({ space })
-
   const validChildren = Children.toArray(children)
   const normalizedSpace = typeof space === "number" ? [space] : space
   const rowSpace = normalizedSpace.map(el => `-${theme.space[el] / 2}px`)
   const colSpace = normalizedSpace.map(el => `${theme.space[el] / 2}px`)
-  const columns = Children.map(validChildren, (el, idx) =>
+  const columns = Children.map(validChildren, el =>
     cloneElement(el, {
       px: colSpace,
     })

@@ -30,7 +30,7 @@ function useWindowSize() {
   return windowSize
 }
 
-export default ({ children }) => {
+const WindowSizeProvider = ({ children }) => {
   const windowSize = useWindowSize()
 
   return (
@@ -40,4 +40,5 @@ export default ({ children }) => {
   )
 }
 
+export default WindowSizeProvider
 export { WindowSizeContext }

@@ -48,7 +48,7 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
   const windowSize = useWindowSizeContext()
 
   const bind = useDrag(
-    ({ offset: [mx, my] }) => {
+    ({ offset: [mx] }) => {
       set({
         transform: `translate3d(${mx}px,0,0)`,
       })

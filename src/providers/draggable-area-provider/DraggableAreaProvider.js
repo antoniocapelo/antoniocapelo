@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 
 const DraggableAreaContext = React.createContext()
 
-export default ({ children }) => {
+const DraggableAreaProvider = ({ children }) => {
   const [isDraggable, setIsDraggable] = useState(false)
   const onAreaEnter = () => setIsDraggable(true)
   const onAreaLeave = () => setIsDraggable(false)
@@ -24,3 +24,4 @@ export default ({ children }) => {
 }
 
 export { DraggableAreaContext }
+export default DraggableAreaProvider

@@ -7,7 +7,7 @@ import ScrollProvider from "../scroll-provider/ScrollProvider"
 import UserAgentProvider from "../user-agent/UserAgentProvider"
 import WindowSizeProvider from "../window-size-provider/WindowSizeProvider"
 
-export default ({ children }) => (
+const AppProviders = ({ children }) => (
   <UserAgentProvider>
     <ScrollProvider>
       <MousePositionProvider>
@@ -20,3 +20,4 @@ export default ({ children }) => (
     </ScrollProvider>
   </UserAgentProvider>
 )
+export default AppProviders

@@ -74,7 +74,7 @@ const Links = styled("div")`
   align-items: center;
 `
 
-const Header = ({ secondary = false, current, onClick, ...props }) => {
+const Header = ({ onClick }) => {
   return (
     <Wrapper bg="dark" display={["none", "none", "flex"]}>
       <Content width="100%" justifyContent="flex-end" display="flex">

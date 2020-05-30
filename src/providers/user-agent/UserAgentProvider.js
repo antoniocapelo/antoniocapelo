@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 
 const UserAgentContext = React.createContext()
 
-export default ({ children }) => {
+const UserAgentProvider = ({ children }) => {
   const [isIos, setIsIos] = useState(false)
   useEffect(() => {
     setIsIos(/iphone|ipad|ipod/i.test(window.navigator.userAgent))
@@ -20,3 +20,4 @@ export default ({ children }) => {
 }
 
 export { UserAgentContext }
+export default UserAgentProvider

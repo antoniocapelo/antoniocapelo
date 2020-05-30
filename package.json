@@ -38,6 +38,8 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
+    "eslint": "^7.1.0",
+    "eslint-plugin-react": "^7.20.0",
     "prettier": "2.0.5"
   },
   "keywords": [
@@ -48,6 +50,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "lint": "eslint ./src",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

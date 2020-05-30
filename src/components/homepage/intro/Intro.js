@@ -4,7 +4,7 @@ import Content from "../../../layout/content"
 import Row from "../../../layout/row"
 import IntroText from "../intro-text"
 
-const Intro = ({ fullHeight, ...props }) => {
+const Intro = () => {
   return (
     <Content bg="dark" py={[6, 8, 9]} data-scroll-section id="about">
       <Row pt="15.5vw">

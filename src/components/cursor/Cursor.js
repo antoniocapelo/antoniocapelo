@@ -53,8 +53,6 @@ const classNames = {
 }
 
 function HandleMouseClick() {
-  // const mouseDownTimeoutRef = useRef(null);
-  // const mouseDownTimeoutRef = useRef(null);
   const eventNames = [
     "transitionend",
     "webkitTransitionEnd",
@@ -64,7 +62,7 @@ function HandleMouseClick() {
   ]
 
   useEffect(() => {
-    const mouseDownHandler = e => {
+    const mouseDownHandler = () => {
       if (body.classList.contains(classNames.mouseDown)) {
         body.classList.add(classNames.mouseDownDone)
       }
