@@ -58,7 +58,7 @@ const Col = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  box-sizing: content-box;
+  box-sizing: border-box;
   margin: 0 auto;
   position: fixed;
   top: 0;

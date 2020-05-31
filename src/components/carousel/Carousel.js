@@ -27,7 +27,7 @@ const Li = styled("li")`
   margin-left: ${props => props.spacing}px;
   transform: skewX(var(--skew-amount));
   &:first-of-type {
-    margin-right: ${({ rtl, spacing }) => (rtl ? spacing : 0)}px;
+    margin-left: ${({ rtl, spacing }) => (rtl ? spacing : 0)}px;
   }
   &:last-of-type {
     margin-right: ${({ rtl, spacing }) => (rtl ? 0 : spacing)}px;
@@ -47,6 +47,8 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
   const ref = useRef()
   const windowSize = useWindowSizeContext()
 
+  const getWidthBoundary = w => (w > 1440 ? 1440 : w - 2 * 48)
+
   const bind = useDrag(
     ({ offset: [mx] }) => {
       set({
@@ -57,11 +59,19 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
       axis: "x",
       bounds: rtl
         ? {
-            right: 1 * (carouselWidth - window.innerWidth + spacing),
+            right:
+              1 *
+              (carouselWidth -
+                getWidthBoundary(window.innerWidth) +
+                2 * spacing),
             left: 0,
           }
         : {
-            left: -1 * (carouselWidth - window.innerWidth + spacing),
+            left:
+              -1 *
+              (carouselWidth -
+                getWidthBoundary(window.innerWidth) +
+                2 * spacing),
             right: 0,
           },
     }

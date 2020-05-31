@@ -33,6 +33,7 @@ const ContentBase = styled("section")`
     transform: translateX(-50%);
     z-index: -1;
   }
+
   @media (max-width: ${theme.breakpoints.md}) {
     min-height: ${({ isIos, fullHeight }) =>
       fullHeight
@@ -41,8 +42,6 @@ const ContentBase = styled("section")`
           : "100vh"
         : "0px"};
   }
-
-
 `
 
 const Content = ({ fullHeight, ...props }) => {
