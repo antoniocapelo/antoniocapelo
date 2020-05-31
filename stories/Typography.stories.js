@@ -1,8 +1,8 @@
 import React from "react"
-import { action } from "@storybook/addon-actions"
-import Heading from "../src/components/typography/heading"
-import CopyComponent from "../src/components/typography/copy"
 import Box from "../src/components/box"
+import SectionTitle from "../src/components/section-title"
+import CopyComponent from "../src/components/typography/copy"
+import Heading from "../src/components/typography/heading"
 
 export default {
   title: "Typography",
@@ -41,6 +41,14 @@ export const Copy = () => (
     <CopyComponent pb="4" light>
       Light Copy text
     </CopyComponent>
+  </Box>
+)
+
+export const sectionTitle = () => (
+  <Box py="4">
+    <SectionTitle>Title 1</SectionTitle>
+    <SectionTitle>Title 2</SectionTitle>
+    <SectionTitle>Title 3</SectionTitle>
   </Box>
 )
 

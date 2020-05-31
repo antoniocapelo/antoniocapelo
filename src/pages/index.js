@@ -3,6 +3,7 @@ import Box from "../components/box"
 import Carousel from "../components/carousel/Carousel"
 import About from "../components/homepage/about"
 import Intro from "../components/homepage/intro"
+import Projects from "../components/homepage/projects"
 import Layout from "../components/layout"
 import SectionTitle from "../components/section-title/SectionTitle"
 import SEO from "../components/seo"
@@ -25,6 +26,12 @@ const IndexPage = () => (
     <SEO title="Home" />
     <Intro />
     <About />
+    <Projects
+      title="Recent Work"
+      subtitle={
+        "front-end code at scale / framework-agnostic design systems / WebGL experiences"
+      }
+    />
     <Content bg="primary" pt="9" data-scroll-section>
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (

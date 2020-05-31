@@ -26,7 +26,7 @@ const CopyBase = styled("p")`
 
 const Copy = ({ secondary = false, light = false, ...props }) => (
   <CopyBase
-    fontSize={["xs", "xs", "sm"]}
+    fontSize={["xxs", "xs", "sm"]}
     color={secondary ? "secondary" : light ? "primary" : "dark"}
     {...props}
   />

@@ -26,13 +26,7 @@ const Image = props => {
     }
   `)
 
-  return (
-    <Img
-      fluid={data.placeholderImage.childImageSharp.fluid}
-      {...props}
-      data-cenas="true"
-    />
-  )
+  return <Img fluid={data.placeholderImage.childImageSharp.fluid} {...props} />
 }
 
 export default Image

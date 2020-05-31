@@ -5,8 +5,8 @@ const colors = {
   dark: "#222222",
 }
 
-const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80]
-// index:      0 .1. 2. 3.  4.  5.  6.  7.  8.  9
+const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 136]
+// index:      0 .1. 2. 3.  4.  5.  6.  7.  8.  9, 10
 const breakpoints = ["544px", "769px", "1440px", "1920px"]
 
 // aliases
@@ -21,13 +21,22 @@ const fonts = {
   // copy: "Porpora",
 }
 
-const fontSizes = ["2rem", "2.4rem", "3.2rem", "3.9rem", "5rem", "6.4rem"]
-fontSizes.xs = fontSizes[0]
-fontSizes.sm = fontSizes[1]
-fontSizes.md = fontSizes[2]
-fontSizes.lg = fontSizes[3]
-fontSizes.xl = fontSizes[4]
-fontSizes.xxl = fontSizes[5]
+const fontSizes = [
+  "1.6rem",
+  "2rem",
+  "2.8rem",
+  "3.2rem",
+  "3.9rem",
+  "5rem",
+  "6.4rem",
+]
+fontSizes.xxs = fontSizes[0]
+fontSizes.xs = fontSizes[1]
+fontSizes.sm = fontSizes[2]
+fontSizes.md = fontSizes[3]
+fontSizes.lg = fontSizes[4]
+fontSizes.xl = fontSizes[5]
+fontSizes.xxl = fontSizes[6]
 
 const maxContentWidth = breakpoints.lg
 const minContentWidth = "320px"

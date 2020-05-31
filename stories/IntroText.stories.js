@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import IntroTextComponent from "../src/components/intro-text"
+import React from "react"
+import IntroTextComponent from "../src/components/homepage/intro-text"
 
 export default {
   title: "Intro Text",
