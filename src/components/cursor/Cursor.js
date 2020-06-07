@@ -18,7 +18,7 @@ export function HandleMouseOver() {
   useEffect(() => {
     const body = document.body
     const handleMouseIn = e => {
-      if (e.target.tagName === "A") {
+      if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
         body.classList.add(classNames.hover)
       }
 
@@ -27,7 +27,7 @@ export function HandleMouseOver() {
       }
     }
     const handleMouseOut = e => {
-      if (e.target.tagName === "A") {
+      if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
         body.classList.remove(classNames.hover)
       }
       if (e.target.dataset.draggable) {

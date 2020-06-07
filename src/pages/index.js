@@ -32,6 +32,11 @@ const IndexPage = () => (
         "front-end code at scale / framework-agnostic design systems / WebGL experiences"
       }
     />
+    <Projects
+      title="Talks & other projects"
+      subtitle={"conference presentations / personal websites and applications"}
+      align="right"
+    />
     <Content bg="primary" pt="9" data-scroll-section>
       <Carousel spacing={spacing}>
         {items.map(({ target }, idx) => (

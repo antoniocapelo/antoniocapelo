@@ -13,11 +13,16 @@ const Projects = ({ title, subtitle, projects, id, align = "left" }) => {
         {title}
       </SectionTitle>
       <Row mb="6">
-        <Col size={[1, 1, 8 / 12]}>
-          <Copy light>{subtitle}</Copy>
+        <Col
+          size={[1, 1, 8 / 12]}
+          ml={align === "right" ? ["0", "0", "33.333%"] : undefined}
+        >
+          <Copy textAlign={align} light>
+            {subtitle}
+          </Copy>
         </Col>
       </Row>
-      <ProjectDetails />
+      <ProjectDetails align={align} />
     </Content>
   )
 }

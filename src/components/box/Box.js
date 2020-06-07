@@ -4,12 +4,13 @@ import {
   compose,
   flexbox,
   layout,
+  position,
   space,
   typography,
 } from "styled-system"
 
 const Box = styled("div")`
-  ${compose(typography, space, flexbox, color, layout)}
+  ${compose(typography, space, flexbox, color, layout, position)}
 `
 
 export default Box

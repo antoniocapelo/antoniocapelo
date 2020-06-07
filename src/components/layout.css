@@ -18,6 +18,19 @@
   box-sizing: border-box;
 }
 
+button:hover {
+  cursor: none;
+}
+
+::selection {
+  background: black; /* WebKit/Blink Browsers */
+  color: #e4d5b6;
+}
+::-moz-selection {
+  background: black; /* Gecko Browsers */
+  color: #e4d5b6;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: "Porpora", sans-serif;

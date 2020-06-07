@@ -49,6 +49,7 @@ const transitions = {
   },
   easings: {
     inOut: "cubic-bezier(0.65, 0, 0.35, 1)",
+    out: "cubic-bezier(0.33, 1, 0.68, 1)",
   },
 }
 

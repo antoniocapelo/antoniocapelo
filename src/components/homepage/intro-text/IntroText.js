@@ -9,7 +9,7 @@ ${space}
 ${color}
 ${layout}
 line-height:1.1;
-font-size: clamp(2rem, 4.5vw, 4.5rem);
+font-size: clamp(2rem, 3vw, 4.5rem);
 
   > span {
       -webkit-text-stroke-width: 1px;
