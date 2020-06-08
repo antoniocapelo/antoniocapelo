@@ -21,21 +21,92 @@ const obj = {
 
 const items = [obj, obj, obj, obj, obj, obj, obj, obj]
 
+const experience = [
+  {
+    label: "Jumo",
+    url: "https://jumo.world",
+    description: "Building products for digital financial services",
+  },
+  {
+    label: "yld",
+    url: "https://yld.io",
+    description: "Providing frontend solutions to clients around the world",
+  },
+  {
+    label: "Moxy",
+    url: "https://moxy.studio",
+    description: "Creating experiences with JS, CSS and WebGL",
+  },
+  {
+    label: "Mindera",
+    url: "https://mindera.com",
+    description: "Building robust web and mobile apps for many industries",
+  },
+  {
+    label: "Blip",
+    url: "https://blip.pt",
+    description: "Developing high-transactional betting products",
+  },
+]
+
+const personalProjects = [
+  {
+    label: "8 Bars A Week",
+    url: "https://8-bars-a-week.capelo.me/",
+    description:
+      "Online audio journal where I post new beats on a weekly basis",
+  },
+  {
+    label: "Sanity-driven development",
+    url: "https://www.youtube.com/watch?v=JCY1wDGcTCk",
+    description:
+      "Talk at Tech In Porto about how component-based approach improved front-end development",
+  },
+  {
+    label: "Props Per Minute",
+    url: "https://www.youtube.com/watch?v=PEWx_bhqHnM",
+    description:
+      "Talk on advanced React patterns for making developer lives easier",
+  },
+  {
+    label: "The Case of the Hydra",
+    url: "http://the-case-of-the-hydra.capelo.me/",
+    description:
+      'WebGL website for promoting "The Case of the Hydra" music album from Dissonant Digging',
+  },
+  {
+    label: "Palette",
+    url: "http://palete.capelo.me/",
+    description:
+      'WebGL website for promoting the "Palette" music album from Stereo Tipo',
+  },
+  {
+    label: "Lemongrass",
+    url: "http://lemongrass.capelo.me/",
+    description:
+      'WebGL website for promoting the "Lemongrass" music album from Stereo Tipo',
+  },
+]
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
     <Intro />
     <About />
     <Projects
+      name="work"
       title="Recent Work"
       subtitle={
         "front-end code at scale / framework-agnostic design systems / WebGL experiences"
       }
+      projects={experience}
     />
     <Projects
+      name="projects"
       title="Talks & other projects"
-      subtitle={"conference presentations / personal websites and applications"}
+      subtitle={"conference presentations / personal websites / apps"}
       align="right"
+      projects={personalProjects}
     />
     <Content bg="primary" pt="9" data-scroll-section>
       <Carousel spacing={spacing}>

@@ -17,21 +17,21 @@ const css = `
     text-decoration: none;
 
     &:after {
-      transform: scaleX(0.8);
+      transform: scale3d(0.8, 1,1);
     }
   }
 
   &:after {
+    will-change: transform;
     position: absolute;
     bottom: -5px;
     content: "";
     display: block;
     width: 100%;
-    border-bottom: 1px solid ${theme.colors.primary};
+    border-bottom: 2px solid ${theme.colors.primary};
     transition: transform ${theme.transitions.durations.fast}ms ${
   theme.transitions.easings.out
 };
-will-change: transform;
   }
 
   &:before {

@@ -6,9 +6,9 @@ import SectionTitle from "../../section-title/SectionTitle"
 import Copy from "../../typography/copy"
 import ProjectDetails from "./project-details"
 
-const Projects = ({ title, subtitle, projects, id, align = "left" }) => {
+const Projects = ({ title, name, subtitle, projects, align = "left" }) => {
   return (
-    <Content bg="dark" py={[6, 8, 9]} data-scroll-section id={id}>
+    <Content bg="dark" py={[6, 8, 9]} data-scroll-section id={name}>
       <SectionTitle color="primary" textAlign={align} mb={["4", "6", "7"]}>
         {title}
       </SectionTitle>
@@ -22,7 +22,7 @@ const Projects = ({ title, subtitle, projects, id, align = "left" }) => {
           </Copy>
         </Col>
       </Row>
-      <ProjectDetails align={align} />
+      <ProjectDetails name={name} align={align} details={projects} />
     </Content>
   )
 }

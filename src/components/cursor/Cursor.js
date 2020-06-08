@@ -133,21 +133,19 @@ const Svg = styled("svg")`
 
   body.hover & {
     circle {
-      transform: scale(1.3);
+      transform: scale3d(1.3, 1.3, 1);
     }
   }
 
   body.hover.mousedown & {
     circle {
-      // animation: ${shrink} 1s ease-out forwards;
-      transform: scale(0.9);
+      transform: scale3d(0.9, 0.9, 1);
     }
   }
 
   body.mousedown & {
     circle {
-      transform: scale(0.7);
-      // animation: ${shrink} 1s ease-out forwards;
+      transform: scale3d(0.7, 0.7, 1);
     }
   }
 

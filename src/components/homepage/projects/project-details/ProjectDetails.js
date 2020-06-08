@@ -8,34 +8,6 @@ import Row from "../../../../layout/row"
 import A from "../../../typography/anchor"
 import Copy from "../../../typography/copy/Copy"
 
-const mock = [
-  {
-    label: "Jumo",
-    url: "https://jumo.world",
-    description: "Building products for digital financial services",
-  },
-  {
-    label: "yld",
-    url: "https://yld.io",
-    description: "Providing frontend solutions to clients around the world",
-  },
-  {
-    label: "Moxy",
-    url: "https://moxy.studio",
-    description: "Creating experiences with JS, CSS and WebGL",
-  },
-  {
-    label: "Mindera",
-    url: "https://mindera.com",
-    description: "Building robust web and mobile apps for many industries",
-  },
-  {
-    label: "Blip",
-    url: "https://blip.pt",
-    description: "Developing high-transactional betting products",
-  },
-]
-
 const buttonStyle = ({ theme, selected }) => css`
   display: block;
   border: none;
@@ -43,6 +15,7 @@ const buttonStyle = ({ theme, selected }) => css`
   background: transparent;
   margin-bottom: ${theme.space[4]}px;
   max-width: 460px;
+  text-align: left;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -53,10 +26,9 @@ const buttonStyle = ({ theme, selected }) => css`
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${theme.colors.primary};
     font-family: ${theme.fonts.heading};
-    color: transparent;
+    color: ${selected ? theme.colors.primary : "transparent"};
     transition: color ${theme.transitions.durations.normal}ms
       ${theme.transitions.easings.out};
-    padding-right: 16px;
 
     &:after {
       content: "";
@@ -64,8 +36,8 @@ const buttonStyle = ({ theme, selected }) => css`
       display: block;
       height: 4px;
       width: ${theme.space[4]}px;
-      top: 55%;
-      right: -${theme.space[4]}px;
+      bottom: ${theme.space[4]}px;
+      right: -${theme.space[5]}px;
       background: ${theme.colors.primary};
       transform-origin: left center;
       transform: scale3d(${selected ? "1" : "0"}, 1, 1);
@@ -77,7 +49,7 @@ const buttonStyle = ({ theme, selected }) => css`
   &:focus,
   &:hover {
     span {
-      color: ${selected ? "transparent" : theme.colors.primary};
+      color: ${theme.colors.primary};
     }
   }
 
@@ -108,7 +80,7 @@ const ProjectName = ({ children, selected, idx, onEnter }) => (
 )
 
 const List = ({ details, onMouseEnter, selectedIdx, align }) => (
-  <Col size={[7 / 12]}>
+  <Col size={align === "left" ? [6 / 12] : [5 / 12]}>
     {details.map((el, idx) => (
       <ProjectName
         key={el.url}
@@ -123,7 +95,7 @@ const List = ({ details, onMouseEnter, selectedIdx, align }) => (
   </Col>
 )
 
-const ProjectDetails = ({ details = mock, align = "left" }) => {
+const ProjectDetails = ({ name, details, align = "left" }) => {
   const [selectedIdx, selectItem] = useState(0)
   const descs = details.map(({ description, url }, idx) => ({
     description,
@@ -140,7 +112,7 @@ const ProjectDetails = ({ details = mock, align = "left" }) => {
   const onMouseEnter = idx => selectItem(idx)
 
   return (
-    <Row>
+    <Row id={`details-${name}`}>
       {align === "left" && (
         <List
           align={align}
@@ -150,25 +122,32 @@ const ProjectDetails = ({ details = mock, align = "left" }) => {
         />
       )}
       <Col size={[5 / 12]} position="relative">
-        {transitions.map(({ item, key, props }) => (
-          <a.div style={props} key={key}>
-            <Copy light pt="4" pb="4">
-              {item.description}
-            </Copy>
-            <A
-              fontSize={["xxs", "xs"]}
-              target="_blank"
-              href={item.url}
-              rel="noopener noreferrer"
-              light
-              pt="3"
-            >
-              Visit website
-            </A>
-          </a.div>
-        ))}
+        <div
+          data-scroll
+          data-scroll-sticky
+          data-scroll-target={`#details-${name}`}
+          style={{ paddingBottom: "20vh" }}
+        >
+          {transitions.map(({ item, key, props }) => (
+            <a.div style={props} key={key}>
+              <Copy light pt="4" pb="4">
+                {item.description}
+              </Copy>
+              <A
+                fontSize={["xxs", "xs"]}
+                target="_blank"
+                href={item.url}
+                rel="noopener noreferrer"
+                light
+                pt="3"
+              >
+                View
+              </A>
+            </a.div>
+          ))}
+        </div>
       </Col>
-      <Col size={[0, 0, 1 / 12]} display={["none", "none", "block"]}></Col>
+      <Col size={[0, 0, 2 / 12]} display={["none", "none", "block"]} />
       {align === "right" && (
         <List
           align={align}
