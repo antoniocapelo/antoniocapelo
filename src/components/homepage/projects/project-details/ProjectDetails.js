@@ -5,6 +5,7 @@ import { a, config, useTransition } from "react-spring"
 import { typography } from "styled-system"
 import Col from "../../../../layout/col/Col"
 import Row from "../../../../layout/row"
+import Box from "../../../box"
 import A from "../../../typography/anchor"
 import Copy from "../../../typography/copy/Copy"
 
@@ -36,7 +37,7 @@ const buttonStyle = ({ theme, selected }) => css`
       display: block;
       height: 4px;
       width: ${theme.space[4]}px;
-      bottom: ${theme.space[4]}px;
+      bottom: ${theme.space[3]}px;
       right: -${theme.space[5]}px;
       background: ${theme.colors.primary};
       transform-origin: left center;
@@ -57,6 +58,12 @@ const buttonStyle = ({ theme, selected }) => css`
   &:active {
     outline: none;
   }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    span:after {
+      bottom: ${theme.space[4]}px;
+    }
+  }
 `
 
 const ProjectButton = styled("button")`
@@ -65,7 +72,7 @@ const ProjectButton = styled("button")`
 `
 
 ProjectButton.defaultProps = {
-  fontSize: "xl",
+  fontSize: ["md", "md", "xl"],
 }
 
 const ProjectName = ({ children, selected, idx, onEnter }) => (
@@ -89,7 +96,7 @@ const List = ({ details, onMouseEnter, selectedIdx, align }) => (
         selected={selectedIdx === idx}
         idx={idx}
       >
-        {el.label}
+        {el.name}
       </ProjectName>
     ))}
   </Col>
@@ -98,10 +105,13 @@ const List = ({ details, onMouseEnter, selectedIdx, align }) => (
 const ProjectDetails = ({ name, details, align = "left" }) => {
   const [selectedIdx, selectItem] = useState(0)
   const descs = details.map(({ description, url }, idx) => ({
-    description,
+    description: description.description,
     url,
     idx,
   }))
+
+  console.log(descs, details)
+
   const transitions = useTransition(descs[selectedIdx], el => el.url, {
     from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
@@ -112,7 +122,13 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
   const onMouseEnter = idx => selectItem(idx)
 
   return (
-    <Row id={`details-${name}`}>
+    <Row position="relative">
+      <Box
+        id={`details-${name}`}
+        position="absolute"
+        top="-64px"
+        bottom="0"
+      ></Box>
       {align === "left" && (
         <List
           align={align}
@@ -126,7 +142,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
           data-scroll
           data-scroll-sticky
           data-scroll-target={`#details-${name}`}
-          style={{ paddingBottom: "20vh" }}
+          style={{ height: "auto" }}
         >
           {transitions.map(({ item, key, props }) => (
             <a.div style={props} key={key}>

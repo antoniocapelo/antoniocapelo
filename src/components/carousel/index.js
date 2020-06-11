@@ -1,1 +1,1 @@
-export {default} from './Box.js';
+export { default } from "./Carousel.js"

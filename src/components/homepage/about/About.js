@@ -17,7 +17,7 @@ const ImageWrapper = styled(Image)`
 
 const About = () => {
   return (
-    <Content py={[6, 8, 10]} bg="primary" data-scroll-section>
+    <Content py={[6, 8, 10]} bg="subtle" data-scroll-section>
       <Row space={4} style={{ overflow: "hidden" }}>
         <BgWrapper size={[1, 0.5, 5 / 12]}>
           <div

@@ -12,7 +12,16 @@ export default ({ children }) => {
       smooth: true,
     })
 
+    const t = setTimeout(() => {
+      LocoScroll.current.update()
+    }, 100)
+
     window.ls = LocoScroll.current
+
+    return () => {
+      clearTimeout(t)
+      LocoScroll.current.destroy()
+    }
   }, [])
 
   return (
