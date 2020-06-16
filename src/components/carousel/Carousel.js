@@ -47,7 +47,10 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
   const ref = useRef()
   const windowSize = useWindowSizeContext()
 
-  const getWidthBoundary = w => (w > 1440 ? 1440 : w - 2 * 48)
+  const getWidthBoundary = () => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 1000
+    return w > 1440 ? 1440 : w - 2 * 48
+  }
 
   const bind = useDrag(
     ({ offset: [mx] }) => {
@@ -59,19 +62,11 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
       axis: "x",
       bounds: rtl
         ? {
-            right:
-              1 *
-              (carouselWidth -
-                getWidthBoundary(window.innerWidth) +
-                2 * spacing),
+            right: 1 * (carouselWidth - getWidthBoundary() + 2 * spacing),
             left: 0,
           }
         : {
-            left:
-              -1 *
-              (carouselWidth -
-                getWidthBoundary(window.innerWidth) +
-                2 * spacing),
+            left: -1 * (carouselWidth - getWidthBoundary() + 2 * spacing),
             right: 0,
           },
     }
