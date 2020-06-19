@@ -11,6 +11,7 @@ const IndexPage = ({
     contentfulPage: pageData,
     contentfulWorkExperiences: { items: workExperience },
     contentfulPersonalProjects: { items: personalProjects },
+    contentfulMusicList: { items: music },
   },
 }) => {
   return (
@@ -19,7 +20,7 @@ const IndexPage = ({
       <Intro />
       <About />
       <Projects
-        name="work"
+        name="experience"
         title="Recent Work"
         subtitle={
           "front-end code at scale / framework-agnostic design systems / WebGL experiences"
@@ -33,7 +34,7 @@ const IndexPage = ({
         align="right"
         projects={personalProjects}
       />
-      <Music />
+      <Music items={music} />
     </Layout>
   )
 }
@@ -73,6 +74,9 @@ export const pageQuery = graphql`
         url
         image {
           id
+          fluid(maxWidth: 500) {
+            ...GatsbyContentfulFluid_withWebp
+          }
         }
       }
     }

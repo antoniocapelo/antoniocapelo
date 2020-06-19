@@ -17,6 +17,7 @@ const buttonStyle = ({ theme, selected }) => css`
   margin-bottom: ${theme.space[4]}px;
   max-width: 460px;
   text-align: left;
+  font-size: clamp(${theme.fontSizes.xs}, 4vw, ${theme.fontSizes.xl});
 
   &:last-of-type {
     margin-bottom: 0;
@@ -37,7 +38,7 @@ const buttonStyle = ({ theme, selected }) => css`
       display: block;
       height: 4px;
       width: ${theme.space[4]}px;
-      bottom: ${theme.space[3]}px;
+      bottom: 0.45em;
       right: -${theme.space[5]}px;
       background: ${theme.colors.primary};
       transform-origin: left center;
@@ -61,7 +62,7 @@ const buttonStyle = ({ theme, selected }) => css`
 
   @media (max-width: ${theme.breakpoints.sm}) {
     span:after {
-      bottom: ${theme.space[4]}px;
+      display: none;
     }
   }
 `
@@ -71,9 +72,9 @@ const ProjectButton = styled("button")`
   ${buttonStyle}
 `
 
-ProjectButton.defaultProps = {
-  fontSize: ["md", "md", "xl"],
-}
+// ProjectButton.defaultProps = {
+//   fontSize: ["md", "md", "xl"],
+// }
 
 const ProjectName = ({ children, selected, idx, onEnter }) => (
   <ProjectButton
@@ -86,8 +87,8 @@ const ProjectName = ({ children, selected, idx, onEnter }) => (
   </ProjectButton>
 )
 
-const List = ({ details, onMouseEnter, selectedIdx, align }) => (
-  <Col size={align === "left" ? [6 / 12] : [5 / 12]}>
+const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
+  <Col size={6 / 12} {...props}>
     {details.map((el, idx) => (
       <ProjectName
         key={el.url}
@@ -110,8 +111,6 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
     idx,
   }))
 
-  console.log(descs, details)
-
   const transitions = useTransition(descs[selectedIdx], el => el.url, {
     from: { position: "absolute", opacity: 0 },
     enter: { opacity: 1 },
@@ -126,7 +125,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
       <Box
         id={`details-${name}`}
         position="absolute"
-        top="-64px"
+        top={[-48, -64, -88]}
         bottom="0"
       ></Box>
       {align === "left" && (
@@ -146,7 +145,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
         >
           {transitions.map(({ item, key, props }) => (
             <a.div style={props} key={key}>
-              <Copy light pt="4" pb="4">
+              <Copy light pb="4" pr={align === "right" ? ["2", "3"] : "0"}>
                 {item.description}
               </Copy>
               <A
@@ -163,7 +162,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
           ))}
         </div>
       </Col>
-      <Col size={[0, 0, 2 / 12]} display={["none", "none", "block"]} />
+      {/* <Col size={[0, 0, 2 / 12]} display={["none", "none", "block"]} /> */}
       {align === "right" && (
         <List
           align={align}

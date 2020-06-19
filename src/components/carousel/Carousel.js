@@ -38,7 +38,7 @@ const Li = styled("li")`
   }
 `
 
-const Carousel = ({ children, spacing = 20, rtl = false }) => {
+const Carousel = ({ children, spacing = 16, rtl = false }) => {
   const [carouselWidth, setWidth] = useState(initialWidth)
   const [style, set] = useSpring(() => ({
     transform: "translate3d(0px,0,0)",
@@ -66,7 +66,7 @@ const Carousel = ({ children, spacing = 20, rtl = false }) => {
             left: 0,
           }
         : {
-            left: -1 * (carouselWidth - getWidthBoundary() + 2 * spacing),
+            left: -1 * (carouselWidth - getWidthBoundary() - 1 * spacing),
             right: 0,
           },
     }

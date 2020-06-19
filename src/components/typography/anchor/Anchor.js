@@ -7,7 +7,6 @@ const css = `
   font-family: ${theme.fonts.copy};
   transform: translateY(${0.11}em);
   line-height: 1.3;
-  position: relative;
 
   text-decoration: none;
 
@@ -16,19 +15,23 @@ const css = `
   &:active {
     text-decoration: none;
 
-    &:after {
+    > span:after {
       transform: scale3d(0.8, 1,1);
     }
   }
 
-  &:after {
+  > span {
+    position: relative;
+  }
+
+  > span:after {
     will-change: transform;
     position: absolute;
-    bottom: -5px;
+    bottom: -3px;
     content: "";
     display: block;
     width: 100%;
-    border-bottom: 2px solid ${theme.colors.primary};
+    border-bottom: 2px solid currentColor;
     transition: transform ${theme.transitions.durations.fast}ms ${
   theme.transitions.easings.out
 };
@@ -49,12 +52,15 @@ const AnchorBase = styled("a")`
   ${css}
 `
 
-const Anchor = ({ secondary = false, light = false, ...props }) => (
+const Anchor = ({ secondary = false, light = false, children, ...props }) => (
   <AnchorBase
     fontSize={["xxs", "xs", "sm"]}
     color={secondary ? "secondary" : light ? "primary" : "dark"}
+    rel="noopener noreferrer"
     {...props}
-  />
+  >
+    <span>{children}</span>
+  </AnchorBase>
 )
 
 export default Anchor

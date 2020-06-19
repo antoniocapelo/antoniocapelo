@@ -28,7 +28,7 @@ const items = [
     label: "Experience",
   },
   {
-    path: "#other-projects",
+    path: "#projects",
     label: "Other Projects",
   },
   {

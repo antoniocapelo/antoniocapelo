@@ -22,13 +22,13 @@ const fonts = {
 }
 
 const fontSizes = [
-  "1.6rem",
-  "2rem",
-  "2.8rem",
-  "3.2rem",
-  "3.9rem",
-  "5rem",
-  "6.4rem",
+  "1.6rem", // xxs
+  "2rem", // xs
+  "2.8rem", // sm
+  "3.2rem", // md
+  "3.9rem", // lg
+  "5rem", // xl
+  "6.4rem", // xxl
 ]
 fontSizes.xxs = fontSizes[0]
 fontSizes.xs = fontSizes[1]

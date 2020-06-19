@@ -135,6 +135,13 @@ const Svg = styled("svg")`
     circle {
       transform: scale3d(1.3, 1.3, 1);
     }
+    path {
+      opacity: 0;
+      transform: translateX(var(--arrow-movement));
+    }
+    path:nth-of-type(2) {
+      transform: translateX(calc(-1 * var(--arrow-movement)));
+    }
   }
 
   body.hover.mousedown & {

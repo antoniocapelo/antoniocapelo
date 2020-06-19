@@ -3,11 +3,16 @@ import React from "react"
 import Col from "../../../layout/col/Col"
 import Content from "../../../layout/content"
 import Row from "../../../layout/row"
+import theme from "../../../theme"
 import IntroText from "../intro-text"
 
 const IntroContent = styled(Content)`
   min-height: calc(100vh - 140px);
   max-height: 1400px;
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    min-height: calc(100vh - 72px);
+  }
 `
 
 const Intro = () => {
@@ -16,7 +21,6 @@ const Intro = () => {
       bg="dark"
       py={[6, 8, 8, 9]}
       data-scroll-section
-      id="about"
       display="flex"
       alignItems="flex-end"
     >

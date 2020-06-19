@@ -9,7 +9,6 @@ const css = `
   transform: translateY(${0.11}em);
   line-height: 1.3;
 
-
   > span {
       color: ${theme.colors.secondary}
   }
