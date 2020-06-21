@@ -71,21 +71,44 @@ const buttonStyle = ({ theme, selected }) => css`
 const ProjectButton = styled("button")`
   ${typography};
   ${buttonStyle};
+  display: block;
   @media (max-width: ${theme.breakpoints.sm}) {
+    display: none;
     text-align: ${props => props.align};
   }
 `
 
-const ProjectName = ({ children, selected, align, onEnter }) => (
-  <ProjectButton
-    tabIndex="0"
-    selected={selected}
-    align={align}
-    rel="noopener noreferrer"
-    onClick={onEnter}
-  >
-    <span>{children}</span>
-  </ProjectButton>
+const ProjLink = styled("a")`
+  ${typography};
+  ${buttonStyle};
+  text-decoration: none;
+  display: none;
+  @media (max-width: ${theme.breakpoints.sm}) {
+    text-align: ${props => props.align};
+    display: block;
+  }
+`
+
+const ProjectName = ({ children, selected, align, onClick, url }) => (
+  <>
+    <ProjectButton
+      tabIndex="0"
+      selected={selected}
+      align={align}
+      onClick={onClick}
+    >
+      <span>{children}</span>
+    </ProjectButton>
+    <ProjLink
+      selected={false}
+      align={align}
+      rel="noopener noreferrer"
+      target="_blank"
+      href={url}
+    >
+      <span>{children}</span>
+    </ProjLink>
+  </>
 )
 
 const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
@@ -104,7 +127,7 @@ const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
         align={align}
         key={el.url}
         url={el.url}
-        onEnter={onMouseEnter.bind(null, idx)}
+        onClick={onMouseEnter.bind(null, idx)}
         selected={selectedIdx === idx}
         idx={idx}
       >
