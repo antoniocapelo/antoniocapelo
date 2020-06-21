@@ -5,6 +5,7 @@ import { a, config, useTransition } from "react-spring"
 import { typography } from "styled-system"
 import Col from "../../../../layout/col/Col"
 import Row from "../../../../layout/row"
+import theme from "../../../../theme"
 import Box from "../../../box"
 import A from "../../../typography/anchor"
 import Copy from "../../../typography/copy/Copy"
@@ -17,7 +18,7 @@ const buttonStyle = ({ theme, selected }) => css`
   margin-bottom: ${theme.space[4]}px;
   max-width: 460px;
   text-align: left;
-  font-size: clamp(${theme.fontSizes.xs}, 4vw, ${theme.fontSizes.xl});
+  font-size: clamp(${theme.fontSizes.sm}, 4vw, ${theme.fontSizes.xl});
 
   &:last-of-type {
     margin-bottom: 0;
@@ -68,18 +69,18 @@ const buttonStyle = ({ theme, selected }) => css`
 `
 
 const ProjectButton = styled("button")`
-  ${typography}
-  ${buttonStyle}
+  ${typography};
+  ${buttonStyle};
+  @media (max-width: ${theme.breakpoints.sm}) {
+    text-align: ${props => props.align};
+  }
 `
 
-// ProjectButton.defaultProps = {
-//   fontSize: ["md", "md", "xl"],
-// }
-
-const ProjectName = ({ children, selected, idx, onEnter }) => (
+const ProjectName = ({ children, selected, align, onEnter }) => (
   <ProjectButton
     tabIndex="0"
     selected={selected}
+    align={align}
     rel="noopener noreferrer"
     onClick={onEnter}
   >
@@ -88,9 +89,19 @@ const ProjectName = ({ children, selected, idx, onEnter }) => (
 )
 
 const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
-  <Col size={6 / 12} {...props}>
+  <Col
+    size={[1, 6 / 12]}
+    {...props}
+    flexDirection="column"
+    display="flex"
+    justifyContent={[
+      align === "left" ? "flex-start" : "flex-end",
+      "flex-start",
+    ]}
+  >
     {details.map((el, idx) => (
       <ProjectName
+        align={align}
         key={el.url}
         url={el.url}
         onEnter={onMouseEnter.bind(null, idx)}
@@ -136,7 +147,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
           selectedIdx={selectedIdx}
         />
       )}
-      <Col size={[5 / 12]} position="relative">
+      <Col size={[0, 5 / 12]} display={["none", "block"]} position="relative">
         <div
           data-scroll
           data-scroll-sticky

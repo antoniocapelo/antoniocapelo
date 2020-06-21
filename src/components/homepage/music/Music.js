@@ -49,11 +49,11 @@ const Music = ({ items }) => {
       </SectionTitle>
 
       <Carousel spacing={spacing}>
-        {items.map(({ id, url, name, image: { fluid } }) => (
+        {items.map(({ id, url, image: { fluid } }) => (
           <CoverWrapper
             bg="dark"
-            width={[200, 200, 300]}
-            height={[200, 200, 300]}
+            width={[200, 200, 350]}
+            height={[200, 200, 350]}
             key={`${id}`}
             position="relative"
           >

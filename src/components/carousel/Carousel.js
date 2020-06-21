@@ -4,9 +4,18 @@ import { animated, useSpring } from "react-spring"
 import { useDrag } from "react-use-gesture"
 import { layout } from "styled-system"
 import useWindowSizeContext from "../../providers/window-size-provider/useWindowSizeContext"
+import theme from "../../theme"
+import Box from "../box"
 
 const initialWidth = 10000
 
+const StyledProgressBar = styled(animated.div)`
+  position: absolute;
+  border-radius: 2px;
+  height: 4px;
+  bottom: 0;
+  background: ${theme.colors.secondary};
+`
 const StyledUl = styled(animated.ul)`
   ${layout}
   --skew-amount: 0deg;
@@ -38,9 +47,14 @@ const Li = styled("li")`
   }
 `
 
-const Carousel = ({ children, spacing = 16, rtl = false }) => {
+const Carousel = ({ children, spacing = 24, rtl = false }) => {
   const [carouselWidth, setWidth] = useState(initialWidth)
+  const containerWidth = useRef(initialWidth)
   const [style, set] = useSpring(() => ({
+    transform: "translate3d(0px,0,0)",
+    config: { mass: 1, tension: 90, friction: 14 },
+  }))
+  const [barStyle, setBarStyle] = useSpring(() => ({
     transform: "translate3d(0px,0,0)",
     config: { mass: 1, tension: 90, friction: 14 },
   }))
@@ -54,8 +68,14 @@ const Carousel = ({ children, spacing = 16, rtl = false }) => {
 
   const bind = useDrag(
     ({ offset: [mx] }) => {
+      const pb = (mx / carouselWidth) * containerWidth.current
+
       set({
         transform: `translate3d(${mx}px,0,0)`,
+      })
+
+      setBarStyle({
+        transform: `translate3d(${-pb}px,0,0)`,
       })
     },
     {
@@ -76,6 +96,7 @@ const Carousel = ({ children, spacing = 16, rtl = false }) => {
     if (ref.current) {
       // increasing ul list so that elements don't shrink and we can
       // measure them properly
+
       ref.current.style.width = `${carouselWidth * 10}px`
       const item = ref.current.querySelector(":scope > *")
       const numberOfItems = Children.count(children)
@@ -83,17 +104,23 @@ const Carousel = ({ children, spacing = 16, rtl = false }) => {
       setWidth(item.offsetWidth * numberOfItems + spacing * numberOfItems - 1)
       // clearing width
       ref.current.style.width = ""
+
+      containerWidth.current = ref.current.parentElement.getBoundingClientRect().width
+      console.log(containerWidth.current)
     }
   }, [windowSize.width])
 
   return (
-    <div
+    <Box
+      pb="4"
+      display="flex"
+      justifyContent={rtl ? "flex-end" : "flex-start"}
+      maxWidth={theme.maxContentWidth}
+      position="relative"
+      my="0"
+      mx="auto"
       style={{
         overflow: "hidden",
-        display: "flex",
-        justifyContent: rtl ? "flex-end" : "flex-start",
-        maxWidth: 1440,
-        margin: "0 auto",
       }}
     >
       <Ul
@@ -110,7 +137,14 @@ const Carousel = ({ children, spacing = 16, rtl = false }) => {
           </Li>
         ))}
       </Ul>
-    </div>
+      <StyledProgressBar
+        {...bind()}
+        style={{
+          width: `${(containerWidth.current / carouselWidth) * 100}%`,
+          ...barStyle,
+        }}
+      ></StyledProgressBar>
+    </Box>
   )
 }
 

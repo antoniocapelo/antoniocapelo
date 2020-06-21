@@ -6,9 +6,16 @@ import SectionTitle from "../../section-title/SectionTitle"
 import Copy from "../../typography/copy"
 import ProjectDetails from "./project-details"
 
-const Projects = ({ title, name, subtitle, projects, align = "left" }) => {
+const Projects = ({
+  title,
+  name,
+  subtitle,
+  projects,
+  align = "left",
+  ...props
+}) => {
   return (
-    <Content bg="dark" py={[6, 8, 9]} data-scroll-section id={name}>
+    <Content bg="dark" py={[6, 8, 9]} data-scroll-section id={name} {...props}>
       <SectionTitle color="primary" textAlign={align} mb={["4", "6", "7"]}>
         {title}
       </SectionTitle>

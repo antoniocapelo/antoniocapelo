@@ -11,7 +11,7 @@ const IntroContent = styled(Content)`
   max-height: 1400px;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 52px);
   }
 `
 
