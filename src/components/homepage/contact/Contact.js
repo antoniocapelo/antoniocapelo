@@ -2,7 +2,7 @@ import React from "react"
 import Col from "../../../layout/col/Col"
 import Content from "../../../layout/content"
 import Row from "../../../layout/row"
-import Image from "../../image"
+import ImageContact from "../../image-contact"
 import { Link } from "../../link-button/LinkButton"
 import SectionTitle from "../../section-title/SectionTitle"
 
@@ -21,7 +21,7 @@ const ContactItem = ({ children, align, url }) => (
 
 const Contact = ({ items }) => {
   return (
-    <Content py={[6, 8, 9]} data-scroll-section id="music" bg="dark">
+    <Content py={[6, 8, 9]} data-scroll-section id="contact" bg="dark">
       <Row>
         <Col size={[1, 1, 8 / 12]}>
           <SectionTitle color="primary" mb={["4", "6", "7"]}>
@@ -52,8 +52,14 @@ const Contact = ({ items }) => {
             - linkedin
           </ContactItem>
         </Col>
-        <Col size={[0, 0, 4 / 12]} display={["none", "none", "flex"]}>
-          <Image style={{ flex: 1 }} />
+        <Col
+          size={[0, 0, 4 / 12]}
+          display={["none", "none", "flex"]}
+          style={{ overflow: "hidden" }}
+        >
+          <div data-scroll-speed="-2" data-scroll style={{ flex: 1 }}>
+            <ImageContact style={{ flex: 1 }} />
+          </div>
         </Col>
       </Row>
     </Content>

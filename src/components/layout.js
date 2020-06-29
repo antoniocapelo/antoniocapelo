@@ -15,6 +15,7 @@ import useEventListener from "../hooks/useEventListener"
 import GridDebugger from "../layout/grid-debugger"
 import theme from "../theme"
 import Cursor from "./cursor"
+import Footer from "./footer"
 import Header from "./header/"
 import "./layout.css"
 
@@ -64,6 +65,7 @@ const Layout = ({ children }) => {
       <Cursor />
       <Header />
       <Main mt={["0px", "0px", theme.layout.headerHeight]}>{children}</Main>
+      <Footer />
     </>
   )
 }

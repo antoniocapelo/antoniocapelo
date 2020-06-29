@@ -8,7 +8,7 @@ export default ({ children }) => {
   useEffect(() => {
     const LocomotiveScroll = require("locomotive-scroll").default
     LocoScroll.current = new LocomotiveScroll({
-      el: document.querySelector("main"),
+      el: document.querySelector("body"),
       smooth: true,
     })
 
