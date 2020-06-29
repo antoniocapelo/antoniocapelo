@@ -1,5 +1,6 @@
 import React from "react"
 import About from "../components/homepage/about"
+import Contact from "../components/homepage/contact"
 import Intro from "../components/homepage/intro"
 import Music from "../components/homepage/music/Music"
 import Projects from "../components/homepage/projects"
@@ -36,6 +37,7 @@ const IndexPage = ({
         projects={personalProjects}
       />
       <Music items={music} />
+      <Contact />
     </Layout>
   )
 }
