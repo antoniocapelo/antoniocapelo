@@ -26,7 +26,16 @@ const ImageContact = props => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} {...props} />
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      sizes={{
+        ...data.placeholderImage.childImageSharp.fluid,
+        aspectRatio: 379 / 498,
+      }}
+      {...props}
+    />
+  )
 }
 
 export default ImageContact

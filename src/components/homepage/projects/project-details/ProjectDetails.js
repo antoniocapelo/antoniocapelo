@@ -38,7 +38,7 @@ const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
     {details.map((el, idx) => (
       <ProjectName
         align={align}
-        key={el.url}
+        key={el.id}
         url={el.url}
         onClick={onMouseEnter.bind(null, idx)}
         selected={selectedIdx === idx}
@@ -91,7 +91,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
           style={{ height: "auto" }}
         >
           {transitions.map(({ item, key, props }) => (
-            <a.div style={props} key={key}>
+            <a.div style={props} key={`${key}-view`}>
               <Copy light pb="4" pr={align === "right" ? ["2", "3"] : "0"}>
                 {item.description}
               </Copy>

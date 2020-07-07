@@ -124,7 +124,7 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
       }}
     >
       <Ul
-        rtl={rtl}
+        rtl={rtl ? true : undefined}
         data-draggable
         {...bind()}
         ref={ref}
@@ -132,7 +132,7 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
         style={style}
       >
         {Children.map(children, (el, idx) => (
-          <Li spacing={spacing} key={idx} rtl={rtl}>
+          <Li spacing={spacing} key={idx} rtl={rtl ? true : undefined}>
             {el}
           </Li>
         ))}

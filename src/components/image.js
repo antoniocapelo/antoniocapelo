@@ -26,7 +26,16 @@ const Image = props => {
     }
   `)
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} {...props} />
+  return (
+    <Img
+      fluid={data.placeholderImage.childImageSharp.fluid}
+      sizes={{
+        ...data.placeholderImage.childImageSharp.fluid,
+        aspectRatio: 480 / 518,
+      }}
+      {...props}
+    />
+  )
 }
 
 export default Image

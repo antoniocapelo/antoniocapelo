@@ -34,7 +34,7 @@ const About = () => {
       <Row space={4} style={{ overflow: "hidden" }}>
         <BgWrapper size={[1, 1, 5 / 12]}>
           <Bg data-scroll-speed="-2" data-scroll>
-            <ImageWrapper />
+            <ImageWrapper alt="Capelo profile picture" />
           </Bg>
         </BgWrapper>
         <Col

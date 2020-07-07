@@ -1,3 +1,4 @@
+import { Global } from "@emotion/core"
 import { ThemeProvider } from "emotion-theming"
 import React from "react"
 import theme from "../../theme"
@@ -13,7 +14,16 @@ const AppProviders = ({ children }) => (
       <MousePositionProvider>
         <WindowSizeProvider>
           <DraggableAreaProvider>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+            <ThemeProvider theme={theme}>
+              <Global
+                styles={{
+                  "*": {
+                    outlineColor: theme.colors.dark,
+                  },
+                }}
+              />
+              {children}
+            </ThemeProvider>
           </DraggableAreaProvider>
         </WindowSizeProvider>
       </MousePositionProvider>
