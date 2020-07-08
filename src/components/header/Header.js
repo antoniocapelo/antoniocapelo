@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { navigate } from "@reach/router"
 import React from "react"
 import { color, layout, space, typography } from "styled-system"
 import Content from "../../layout/content"
@@ -83,12 +82,13 @@ const Header = ({ onClick }) => {
             <Link
               key={path}
               onClick={() => {
-                navigate(path)
+                const el = document.querySelector(path)
+                window.ls.scrollTo(el)
+
                 onClick && onClick(path)
               }}
               fontSize="2.4rem"
               color="primary"
-              href={path}
             >
               {label}
             </Link>
