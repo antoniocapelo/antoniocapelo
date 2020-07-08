@@ -106,7 +106,6 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
       ref.current.style.width = ""
 
       containerWidth.current = ref.current.parentElement.getBoundingClientRect().width
-      console.log(containerWidth.current)
     }
   }, [windowSize.width])
 

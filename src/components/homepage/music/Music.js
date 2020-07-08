@@ -1,12 +1,15 @@
 import styled from "@emotion/styled"
 import Img from "gatsby-image"
 import React from "react"
+import Col from "../../../layout/col/Col"
 import Content from "../../../layout/content"
+import Row from "../../../layout/row"
 import theme from "../../../theme"
 import Box from "../../box"
 import Carousel from "../../carousel"
 import SectionTitle from "../../section-title/SectionTitle"
 import A from "../../typography/anchor"
+import Copy from "../../typography/copy"
 
 const spacing = theme.space[6]
 
@@ -47,6 +50,13 @@ const Music = ({ items }) => {
       <SectionTitle color="dark" mb={["4", "6", "7"]}>
         Music
       </SectionTitle>
+      <Row mb="6">
+        <Col size={[1, 1, 8 / 12]}>
+          <Copy>
+            analog samplers / vintage synths / chill-hop / jazzy hip-hop
+          </Copy>
+        </Col>
+      </Row>
 
       <Carousel spacing={spacing}>
         {items.map(({ id, url, image: { fluid } }) => (
