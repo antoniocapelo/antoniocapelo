@@ -63,7 +63,17 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
 
   const getWidthBoundary = () => {
     const w = typeof window !== "undefined" ? window.innerWidth : 1000
+    console.log({w});
     return w > 1440 ? 1440 : w - 2 * 48
+    // return w > 1440 ? 1440 : w - 2 * 48
+  }
+
+  const getWidthBoundary2 = () => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 1000
+    const width = w > 1440 ? 1440 - 24 : w
+
+    return (width - spacing -carouselWidth)
+
   }
 
   const bind = useDrag(
@@ -86,7 +96,7 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
             left: 0,
           }
         : {
-            left: -1 * (carouselWidth - getWidthBoundary() - 1 * spacing),
+            left: getWidthBoundary2(),
             right: 0,
           },
     }
