@@ -17,6 +17,9 @@ const AppProviders = ({ children }) => (
             <ThemeProvider theme={theme}>
               <Global
                 styles={{
+                  "html":{
+                    background: theme.colors.dark,
+                  },
                   "*": {
                     outlineColor: theme.colors.dark,
                   },
