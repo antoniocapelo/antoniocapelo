@@ -136,13 +136,13 @@ const Carousel = ({ children, spacing = 24, rtl = false }) => {
           </Li>
         ))}
       </Ul>
-      <StyledProgressBar
+      {/* <StyledProgressBar
         {...bind()}
         style={{
           width: `${(containerWidth.current / carouselWidth) * 100}%`,
           ...barStyle,
         }}
-      ></StyledProgressBar>
+      ></StyledProgressBar> */}
     </Box>
   )
 }

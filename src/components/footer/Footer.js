@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <Content py={[2, 4, 4]} data-scroll-section id="footer" bg="subtle">
-        <Copy fontSize={"xs"}>
+        <Copy fontSize={["xxs", "xs"]}>
           Website designed with{" "}
           <A
             color="dark"
