@@ -29,7 +29,6 @@ const IndexPage = ({
         projects={workExperience}
       />
       <Projects
-        pt={[2, 8, 9]}
         name="projects"
         title="Talks & other projects"
         subtitle={"conference presentations / personal websites / apps"}

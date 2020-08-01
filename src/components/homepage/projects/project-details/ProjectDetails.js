@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { a, config, useTransition } from "react-spring"
 import Col from "../../../../layout/col/Col"
 import Row from "../../../../layout/row"
+import useScrollContext from "../../../../providers/scroll-provider/useScrollContext"
 import Box from "../../../box"
 import { Button, Link } from "../../../link-button/LinkButton"
 import A from "../../../typography/anchor"
@@ -52,11 +53,31 @@ const List = ({ details, onMouseEnter, selectedIdx, align, ...props }) => (
 
 const ProjectDetails = ({ name, details, align = "left" }) => {
   const [selectedIdx, selectItem] = useState(0)
+  const [descHeight, setDescHeight] = useState(0)
+  const descRef = useRef()
   const descs = details.map(({ description, url }, idx) => ({
     description: description.description,
     url,
     idx,
   }))
+  const LSScroll = useScrollContext()
+
+  useEffect(() => {
+    if (!descRef.current) {
+      return
+    }
+
+    const t = setTimeout(() => {
+      const height = descRef.current.getBoundingClientRect().height
+
+      console.log({ height })
+
+      setDescHeight(height)
+      LSScroll.current.update()
+    }, 100)
+
+    return () => clearTimeout(t)
+  }, [selectedIdx])
 
   const transitions = useTransition(descs[selectedIdx], el => el.url, {
     from: { position: "absolute", opacity: 0 },
@@ -70,10 +91,12 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
   return (
     <Row position="relative">
       <Box
+        data-scroll
+        data-scroll-repeat
         id={`details-${name}`}
         position="absolute"
-        top={[-48, -64, -88]}
-        bottom="0"
+        top={[-48, -64]}
+        height={`calc(100% - ${descHeight}px)`}
       ></Box>
       {align === "left" && (
         <List
@@ -91,7 +114,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
           style={{ height: "auto" }}
         >
           {transitions.map(({ item, key, props }) => (
-            <a.div style={props} key={`${key}-view`}>
+            <a.div style={props} key={`${key}-view`} ref={descRef}>
               <Copy light pb="4" pr={align === "right" ? ["2", "3"] : "0"}>
                 {item.description}
               </Copy>

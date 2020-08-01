@@ -14,6 +14,12 @@ export default ({ children }) => {
 
     const t = setTimeout(() => {
       LocoScroll.current.update()
+      LocoScroll.current.on("scroll", () => {
+        const body = document.body
+        if (body.classList.contains("drag")) {
+          body.classList.remove("drag")
+        }
+      })
     }, 100)
 
     window.ls = LocoScroll.current

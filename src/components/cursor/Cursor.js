@@ -19,19 +19,19 @@ export function HandleMouseOver() {
     const body = document.body
     const handleMouseIn = e => {
       if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
-        body.classList.add(classNames.hover)
+        body.classList.add(cursorClassnames.hover)
       }
 
       if (e.target.dataset.draggable) {
-        body.classList.add(classNames.drag)
+        body.classList.add(cursorClassnames.drag)
       }
     }
     const handleMouseOut = e => {
       if (e.target.tagName === "A" || e.target.tagName === "BUTTON") {
-        body.classList.remove(classNames.hover)
+        body.classList.remove(cursorClassnames.hover)
       }
       if (e.target.dataset.draggable) {
-        body.classList.remove(classNames.drag)
+        body.classList.remove(cursorClassnames.drag)
       }
     }
 
@@ -45,7 +45,7 @@ export function HandleMouseOver() {
   }, [])
 }
 
-const classNames = {
+export const cursorClassnames = {
   mouseDown: "mousedown",
   mouseDownDone: "mousedown-done",
   hover: "hover",
@@ -63,8 +63,8 @@ function HandleMouseClick() {
 
   useEffect(() => {
     const mouseDownHandler = () => {
-      if (body.classList.contains(classNames.mouseDown)) {
-        body.classList.add(classNames.mouseDownDone)
+      if (body.classList.contains(cursorClassnames.mouseDown)) {
+        body.classList.add(cursorClassnames.mouseDownDone)
       }
     }
     eventNames.forEach(eventName =>
@@ -72,11 +72,14 @@ function HandleMouseClick() {
     )
     const body = document.body
     const handleMouseDown = () => {
-      body.classList.add(classNames.mouseDown)
+      body.classList.add(cursorClassnames.mouseDown)
     }
     const handleMouseUp = () => {
-      if (body.classList.contains(classNames.mouseDownDone)) {
-        body.classList.remove(classNames.mouseDown, classNames.mouseDownDone)
+      if (body.classList.contains(cursorClassnames.mouseDownDone)) {
+        body.classList.remove(
+          cursorClassnames.mouseDown,
+          cursorClassnames.mouseDownDone
+        )
       } else {
         requestAnimationFrame(handleMouseUp)
       }

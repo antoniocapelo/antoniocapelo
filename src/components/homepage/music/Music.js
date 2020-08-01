@@ -33,10 +33,6 @@ const CoverWrapper = styled(Box)`
     }
   }
 
-  &:hover ${StyledCover} {
-    filter: none;
-  }
-
   body.mousedown & {
     ${StyledCover} {
       filter: brightness(0.85) saturate(0);
@@ -44,9 +40,18 @@ const CoverWrapper = styled(Box)`
   }
 `
 
+const ListenBox = styled(Box)`
+  &:focus,
+  &:hover {
+    & + ${StyledCover} {
+      filter: none;
+    }
+  }
+`
+
 const Music = ({ items }) => {
   return (
-    <Content py={[6, 8, 9]} data-scroll-section id="music" bg="subtle">
+    <Content py={[6, 8, 10]} data-scroll-section id="music" bg="subtle">
       <SectionTitle color="dark" mb={["4", "6", "7"]}>
         Music
       </SectionTitle>
@@ -67,7 +72,7 @@ const Music = ({ items }) => {
             key={`${id}`}
             position="relative"
           >
-            <Box
+            <ListenBox
               position="absolute"
               top="-1px"
               left="-1px"
@@ -86,7 +91,7 @@ const Music = ({ items }) => {
               >
                 Listen
               </A>
-            </Box>
+            </ListenBox>
             <StyledCover fluid={fluid} />
           </CoverWrapper>
         ))}

@@ -5,7 +5,7 @@ const colors = {
   dark: "#222222",
 }
 
-const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 136]
+const space = [0, 4, 8, 16, 24, 32, 40, 48, 64, 80, 104]
 // index:      0 .1. 2. 3.  4.  5.  6.  7.  8.  9, 10
 const breakpoints = ["544px", "769px", "1440px", "1920px"]
 

@@ -15,7 +15,7 @@ const Projects = ({
   ...props
 }) => {
   return (
-    <Content bg="dark" py={[6, 8, 9]} data-scroll-section id={name} {...props}>
+    <Content bg="dark" py={[6, 8, 10]} data-scroll-section id={name} {...props}>
       <SectionTitle color="primary" textAlign={align} mb={["4", "6", "7"]}>
         {title}
       </SectionTitle>
