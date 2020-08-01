@@ -43,6 +43,13 @@ const css = `
     display: block;
     height: 0;
   }
+
+  @media (max-width: ${theme.breakpoints.sm}) {
+    > span:after {
+      bottom: -2px;
+      border-bottom: 1px solid currentColor;
+    }
+  }
 `
 
 const AnchorBase = styled("a")`

@@ -5,44 +5,41 @@ import Copy from "../typography/copy"
 const Footer = () => {
   return (
     <footer>
-      <Content py={[2, 4, 4]} data-scroll-section id="footer" bg="subtle">
-        <Copy fontSize={["xxs", "xs"]}>
+      <Content py={[3, 4, 4]} data-scroll-section id="footer" bg="subtle">
+        <Copy fontSize={["1.2rem", "xs"]} lineHeight="1.5">
           Website designed with{" "}
           <A
             color="dark"
-            fontSize={["xxs", "xs"]}
+            fontSize={["1.2rem", "xs"]}
             target="_blank"
             href="https://www.figma.com/"
             rel="noopener noreferrer"
             light
             style={{ transform: "none", display: "inline-block" }}
-            pt="3"
           >
             figma
           </A>
           , uses the{" "}
           <A
             color="dark"
-            fontSize={["xxs", "xs"]}
+            fontSize={["1.2rem", "xs"]}
             target="_blank"
             href="http://collletttivo.it/"
             rel="noopener noreferrer"
             light
             style={{ transform: "none", display: "inline-block" }}
-            pt="3"
           >
             Porpora
           </A>{" "}
           and{" "}
           <A
             color="dark"
-            fontSize={["xxs", "xs"]}
+            fontSize={["1.2rem", "xs"]}
             target="_blank"
             href="http://collletttivo.it/"
             rel="noopener noreferrer"
             light
             style={{ transform: "none", display: "inline-block" }}
-            pt="3"
           >
             Messapia
           </A>{" "}
