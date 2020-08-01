@@ -70,8 +70,6 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
     const t = setTimeout(() => {
       const height = descRef.current.getBoundingClientRect().height
 
-      console.log({ height })
-
       setDescHeight(height)
       LSScroll.current.update()
     }, 100)

@@ -116,7 +116,11 @@ const Svg = styled("svg")`
     transform-origin: center;
     stroke: ${theme.colors.primary};
     transition: transform ${theme.transitions.durations.fast}ms
-      ${theme.transitions.easings.inOut};
+        ${theme.transitions.easings.inOut},
+      stroke-dashoffset ${theme.transitions.durations.long * 2}ms
+        ${theme.transitions.easings.out} ${theme.transitions.durations.normal}ms;
+    stroke-dasharray: 100;
+    stroke-dashoffset: ${props => (props.mounted ? 0 : 100)};
   }
 
   path {
@@ -172,8 +176,9 @@ const Svg = styled("svg")`
   }
 `
 
-const CursorSvg = ({ style }) => (
+const CursorSvg = ({ style, mounted }) => (
   <Svg
+    mounted={mounted}
     id="cursor-container"
     style={style}
     width="64"
@@ -229,6 +234,7 @@ const Cursor = () => {
 
   return (
     <CursorSvg
+      mounted={x !== -60}
       style={{
         left: `${x}px`,
         top: `${y}px`,
