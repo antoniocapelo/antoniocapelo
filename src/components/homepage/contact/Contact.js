@@ -31,7 +31,7 @@ const Contact = ({ items }) => {
       </Row>
       <Row>
         <Col
-          size={[1, 1, 8 / 12]}
+          size={[1, 8 / 12]}
           flexDirection="column"
           display="flex"
           justifyContent={["flex-start"]}
@@ -53,8 +53,8 @@ const Contact = ({ items }) => {
           </ContactItem>
         </Col>
         <Col
-          size={[0, 0, 4 / 12]}
-          display={["none", "none", "flex"]}
+          size={[0, 4 / 12]}
+          display={["none", "flex"]}
           style={{ overflow: "hidden" }}
         >
           <div data-scroll-speed="-2" data-scroll style={{ flex: 1 }}>

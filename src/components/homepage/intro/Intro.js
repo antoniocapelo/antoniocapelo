@@ -11,8 +11,15 @@ const IntroContent = styled(Content)`
   max-height: 1400px;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    min-height: calc(100vh - 52px);
+    max-height: none;
+    height: calc(100vh - 52px);
+
+    @supports (-webkit-touch-callout: none) {
+      /* The hack for Safari */
+      height: calc(100vh - ${48 + theme.layout.iosBottomBarHeight}px);
+    }
   }
+  max-height: 200px;
 `
 
 const Intro = () => {

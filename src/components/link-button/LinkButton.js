@@ -55,6 +55,7 @@ const buttonStyle = ({ theme, selected }) => css`
   }
 
   @media (max-width: ${theme.breakpoints.sm}) {
+    margin-bottom: ${theme.space[2]}px;
     span:after {
       display: none;
     }

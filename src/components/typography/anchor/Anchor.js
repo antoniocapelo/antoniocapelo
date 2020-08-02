@@ -28,6 +28,7 @@ const css = `
     will-change: transform;
     position: absolute;
     bottom: -3px;
+    left: 0;
     content: "";
     display: block;
     width: 100%;
@@ -46,7 +47,7 @@ const css = `
 
   @media (max-width: ${theme.breakpoints.sm}) {
     > span:after {
-      bottom: -2px;
+      bottom: -1px;
       border-bottom: 1px solid currentColor;
     }
   }

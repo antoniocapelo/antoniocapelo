@@ -16,6 +16,12 @@ font-size: clamp(2rem, 3vw, 4.5rem);
       -webkit-text-stroke-color: ${theme.colors.primary};
       color: transparent
   }
+
+  @media (max-width: ${theme.breakpoints.md}) {
+    line-height: 1.25;
+    font-size: clamp(2rem, 5vw, 5rem);
+  }
+
 `
 
 const IntroText = props => <IntroTextComponent color="primary" {...props} />
