@@ -87,8 +87,9 @@ const Header = ({ onClick }) => {
 
                 onClick && onClick(path)
               }}
-              fontSize="2.4rem"
+              fontSize="1.8rem"
               color="primary"
+              fontFamily="Messapia-bold"
             >
               {label}
             </Link>
