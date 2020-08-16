@@ -64,7 +64,7 @@ const Music = ({ items }) => {
       </Row>
 
       <Carousel spacing={spacing}>
-        {items.map(({ id, url, image: { fluid } }) => (
+        {items.map(({ id, name, url, image: { fluid } }) => (
           <CoverWrapper
             bg="dark"
             width={[200, 200, 350]}
@@ -92,7 +92,7 @@ const Music = ({ items }) => {
                 Listen
               </A>
             </ListenBox>
-            <StyledCover fluid={fluid} />
+            <StyledCover fluid={fluid} alt={`${name} album cover`} />
           </CoverWrapper>
         ))}
       </Carousel>

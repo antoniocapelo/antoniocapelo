@@ -58,7 +58,7 @@ const Contact = ({ items }) => {
           style={{ overflow: "hidden" }}
         >
           <div data-scroll-speed="-2" data-scroll style={{ flex: 1 }}>
-            <ImageContact style={{ flex: 1 }} />
+            <ImageContact style={{ flex: 1 }} alt="Capelo profile picture" />
           </div>
         </Col>
       </Row>

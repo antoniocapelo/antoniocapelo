@@ -18,7 +18,6 @@ breakpoints.xl = breakpoints[3]
 const fonts = {
   heading: "Messapia-bold",
   copy: "Messapia-bold",
-  // copy: "Porpora",
 }
 
 const fontSizes = [
