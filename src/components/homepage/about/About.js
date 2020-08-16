@@ -23,8 +23,20 @@ const Bg = styled("div")`
   right: 12px;
   bottom: 0;
 
+  @media (min-width: ${theme.breakpoints.md}) and (max-width: 1024px) {
+    img {
+      height: 80% !important;
+    }
+  }
+
   @media (max-width: ${theme.breakpoints.md}) {
     display: none;
+  }
+`
+
+const CopyAbout = styled(Copy)`
+  @media (min-width: ${theme.breakpoints.md}) and (max-width: 1024px) {
+    font-size: ${theme.fontSizes.xs};
   }
 `
 
@@ -42,23 +54,23 @@ const About = () => {
           display={["none", "none", "none", "block"]}
         ></Col>
         <Col size={[1, 1, 7 / 12, 6 / 12]} alignSelf="center" py={[2, 2, 4, 4]}>
-          <Copy mb="4">
+          <CopyAbout mb="4">
             With almost a decade of web development experience, I consider
             myself a <span>creative engineer</span> who’s efficient in
             delivering high-quality products.
-          </Copy>
+          </CopyAbout>
 
-          <Copy mb="4">
+          <CopyAbout mb="4">
             I’m focused on the <span>end-user</span> and in providing the best
             possible experience when interacting with the UI.
-          </Copy>
+          </CopyAbout>
 
-          <Copy id="test">
+          <CopyAbout>
             I work mostly with <span>TypeScript</span>, <span>React</span>,{" "}
             <span>CSS</span> and <span>WebGL</span> but I’m also versed in{" "}
             <span>back-end</span> solutions, <span>CI/CD</span> and{" "}
             <span>testing</span>.
-          </Copy>
+          </CopyAbout>
         </Col>
       </Row>
     </Content>
