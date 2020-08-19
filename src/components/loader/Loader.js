@@ -1,68 +1,68 @@
 import styled from "@emotion/styled"
 import { useState } from "react"
 import { animated, useSpring } from "react-spring"
+import useLoadProgress from "../../providers/load-progress/useLoadProgress"
 import theme from "../../theme"
 import Box from "../box"
 
 const Container = styled(Box)`
-  height: 100vh;
+  height: 100px;
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 50;
-`
-
-const TopSection = styled(Box)`
-  height: calc(100vh - 140px);
-
-  @media (max-width: ${theme.breakpoints.md}) {
-    height: calc(100vh - 52px);
-
-    @supports (-webkit-touch-callout: none) {
-      /* The hack for Safari */
-      height: calc(100vh - ${48 + theme.layout.iosBottomBarHeight}px);
-    }
-  }
+  z-index: 100;
 `
 
 const Bar = styled(animated.div)`
   height: 2px;
-  background: ${theme.colors.primary};
+  background: ${theme.colors.subtle};
   position: absolute;
-  bottom: 140px;
+  bottom: 74px;
   transform-origin: top center;
   width: 100vw;
 
   @media (max-width: ${theme.breakpoints.md}) {
-    height: 52px;
+    bottom: 50px;
 
     @supports (-webkit-touch-callout: none) {
       /* The hack for Safari */
-      height: ${48 + theme.layout.iosBottomBarHeight}px;
+      bottom: ${48 + theme.layout.iosBottomBarHeight}px;
     }
   }
 `
 
 const Loader = () => {
-  const [p, setP] = useState(0)
-  const [h, setH] = useState(false)
+  // return null
+  const { progress, onLoaderDone } = useLoadProgress()
+  const [animateHeight, setAnimateHeight] = useState(false)
+  const [showContent, setShowContent] = useState(false)
   const handleRest = () => {
-    if (p >= 100) {
-      setH(true)
+    if (progress * 100 >= 100) {
+      onLoaderDone()
+      setAnimateHeight(true)
+    }
+
+    if (animateHeight) {
+      setShowContent(true)
     }
   }
   const props = useSpring({
-    ph: [p / 100, h ? 70 : 1],
+    animVariables: [progress, animateHeight ? 70 : 1],
     onRest: handleRest,
   })
 
+  if (showContent) {
+    return null
+  }
+
   return (
-    <Container bg="dark" onClick={() => setP(p + 50)}>
-      <TopSection bg="dark" />
+    <Container bg={"dark"}>
       <Bar
         style={{
-          transform: props.ph.interpolate((p, h) => `scale3d(${p}, ${h}, 1)`),
+          transform: props.animVariables.interpolate(
+            (progress, height) => `scale3d(${progress}, ${height}, 1)`
+          ),
         }}
       />
     </Container>

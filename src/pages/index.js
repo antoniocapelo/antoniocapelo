@@ -5,6 +5,7 @@ import Intro from "../components/homepage/intro"
 import Music from "../components/homepage/music/Music"
 import Projects from "../components/homepage/projects"
 import Layout from "../components/layout"
+import Loader from "../components/loader/Loader"
 import SEO from "../components/seo"
 
 const IndexPage = ({
@@ -16,28 +17,31 @@ const IndexPage = ({
   },
 }) => {
   return (
-    <Layout>
-      <SEO title="Home" />
-      <Intro />
-      <About />
-      <Projects
-        name="experience"
-        title="Recent Work"
-        subtitle={
-          "front-end code at scale / framework-agnostic design systems / WebGL experiences"
-        }
-        projects={workExperience}
-      />
-      <Projects
-        name="projects"
-        title="Talks & other projects"
-        subtitle={"conference presentations / personal websites / apps"}
-        align="right"
-        projects={personalProjects}
-      />
-      <Music items={music} />
-      <Contact />
-    </Layout>
+    <>
+      <Loader />
+      <Layout>
+        <SEO title="Home" />
+        <Intro />
+        <About />
+        <Projects
+          name="experience"
+          title="Recent Work"
+          subtitle={
+            "front-end code at scale / framework-agnostic design systems / WebGL experiences"
+          }
+          projects={workExperience}
+        />
+        <Projects
+          name="projects"
+          title="Talks & other projects"
+          subtitle={"conference presentations / personal websites / apps"}
+          align="right"
+          projects={personalProjects}
+        />
+        <Music items={music} />
+        <Contact />
+      </Layout>
+    </>
   )
 }
 

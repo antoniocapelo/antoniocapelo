@@ -3,6 +3,7 @@ import React from "react"
 import Col from "../../../layout/col/Col"
 import Content from "../../../layout/content"
 import Row from "../../../layout/row"
+import useLoadProgress from "../../../providers/load-progress/useLoadProgress"
 import theme from "../../../theme"
 import Image from "../../image"
 import Copy from "../../typography/copy"
@@ -40,13 +41,34 @@ const CopyAbout = styled(Copy)`
   }
 `
 
+const isLargeViewport = () =>
+  typeof window !== "undefined" && window.innerWidth >= theme.breakpoints.md
+
 const About = () => {
+  const { incrementRequests, requestDone } = useLoadProgress()
+
+  const handleStartLoad = () => {
+    if (isLargeViewport()) {
+      incrementRequests()
+    }
+  }
+
+  const handleLoad = () => {
+    if (isLargeViewport()) {
+      requestDone()
+    }
+  }
+
   return (
     <Content py={[6, 8, 10]} bg="subtle" data-scroll-section id="about">
       <Row space={4} style={{ overflow: "hidden" }}>
         <BgWrapper size={[1, 1, 5 / 12]}>
           <Bg data-scroll-speed="-2" data-scroll>
-            <ImageWrapper alt="Profile picture" />
+            <ImageWrapper
+              alt="Profile picture"
+              onLoad={handleLoad}
+              onStartLoad={handleStartLoad}
+            />
           </Bg>
         </BgWrapper>
         <Col

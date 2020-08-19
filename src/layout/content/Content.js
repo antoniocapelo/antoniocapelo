@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import React from "react"
+import React, { forwardRef } from "react"
 import { color, flexbox, layout, space } from "styled-system"
 import useUserAgent from "../../providers/user-agent/useUserAgent"
 import theme from "../../theme"
@@ -44,11 +44,12 @@ const ContentBase = styled("section")`
   }
 `
 
-const Content = ({ fullHeight, ...props }) => {
+const Content = forwardRef(({ fullHeight, ...props }, ref) => {
   const { isIos } = useUserAgent()
 
   return (
     <ContentBase
+      ref={ref}
       fullHeight={fullHeight}
       isIos={isIos}
       mx="auto"
@@ -58,6 +59,6 @@ const Content = ({ fullHeight, ...props }) => {
       {...props}
     />
   )
-}
+})
 
 export default Content

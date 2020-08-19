@@ -92,7 +92,11 @@ const Music = ({ items }) => {
                 Listen
               </A>
             </ListenBox>
-            <StyledCover fluid={fluid} alt={`${name} album cover`} />
+            <StyledCover
+              draggable={false}
+              fluid={fluid}
+              alt={`${name} album cover`}
+            />
           </CoverWrapper>
         ))}
       </Carousel>

@@ -1,15 +1,8 @@
 @font-face {
   font-family: "Messapia-bold";
-  src: url("../fonts/Messapia-Bold.woff2") format("woff2"),
-    url("../fonts/Messapia-Bold.woff") format("woff"),
-    url("../fonts/Messapia-Bold.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "Porpora";
-  src: url("../fonts/Porpora-Regular.woff2") format("woff2"),
-    url("../fonts/Porpora-Regular.woff") format("woff"),
-    url("../fonts/Porpora-Regular.ttf") format("truetype");
+  src: url("../../static/fonts/Messapia-Bold.woff2") format("woff2"),
+    url("../../static/fonts/Messapia-Bold.woff") format("woff"),
+    url("../../static/fonts/Messapia-Bold.otf") format("truetype");
 }
 
 *,
@@ -33,9 +26,10 @@ button:hover {
 }
 
 html {
+  background: #222222;
   cursor: none;
   scroll-behavior: smooth;
-  font-family: "Porpora", sans-serif;
+  font-family: "Messapia-Bold", sans-serif;
   /* so that all REM measurements are based on 10px sizing */
   font-size: 62.5%;
   -ms-text-size-adjust: 100%;

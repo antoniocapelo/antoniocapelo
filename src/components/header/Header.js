@@ -1,10 +1,12 @@
 import styled from "@emotion/styled"
 import React from "react"
+import { animated, config, useSpring } from "react-spring"
 import { color, layout, space, typography } from "styled-system"
 import Content from "../../layout/content"
+import useLoadProgress from "../../providers/load-progress/useLoadProgress"
 import theme from "../../theme"
 
-const Wrapper = styled("header")`
+const Wrapper = animated(styled("header")`
   ${layout}
   ${space}
   ${color}
@@ -15,7 +17,7 @@ const Wrapper = styled("header")`
   z-index: 50;
   min-height: ${theme.layout.headerHeight}px;
   justify-content: flex-end;
-`
+`)
 
 const items = [
   {
@@ -67,15 +69,27 @@ const Link = styled("a")`
 
 const Links = styled("div")`
   display: flex;
-  width: 80%;
+  width: 90%;
   max-width: 768px;
   justify-content: space-between;
   align-items: center;
 `
 
 const Header = ({ onClick }) => {
+  const { loaderReady } = useLoadProgress()
+  const props = useSpring({
+    opacity: loaderReady ? 1 : 0,
+    transform: loaderReady ? "translateY(0)" : "translateY(-8px)",
+    delay: 1000,
+    config: config.gentle,
+    from: {
+      opacity: 0,
+      transform: "translateY(-8px)",
+    },
+  })
+
   return (
-    <Wrapper bg="dark" display={["none", "none", "flex"]}>
+    <Wrapper bg="dark" display={["none", "none", "flex"]} style={props}>
       <Content width="100%" justifyContent="flex-end" display="flex">
         <Links>
           {items.map(({ label, path }) => (

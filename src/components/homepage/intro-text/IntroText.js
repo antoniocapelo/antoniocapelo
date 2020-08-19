@@ -1,17 +1,20 @@
 import styled from "@emotion/styled"
-import React from "react"
+import { animated } from "react-spring"
 import { color, layout, space, typography } from "styled-system"
 import theme from "../../../theme"
 
-const IntroTextComponent = styled("h1")`
+const IntroText = styled(animated.h1)`
 ${typography}
 ${space} 
 ${color}
 ${layout}
 line-height:1.1;
 font-size: clamp(2rem, 3vw, 4.5rem);
+position: relative;
+width: 100%;
+will-change: filter;
 
-  > span {
+  span {
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: ${theme.colors.primary};
       color: transparent
@@ -24,6 +27,8 @@ font-size: clamp(2rem, 3vw, 4.5rem);
 
 `
 
-const IntroText = props => <IntroTextComponent color="primary" {...props} />
+IntroText.defaultProps = {
+  color: "primary",
+}
 
 export default IntroText
