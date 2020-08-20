@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { animated, useSpring } from "react-spring"
 import useLoadProgress from "../../providers/load-progress/useLoadProgress"
+import useScrollContext from "../../providers/scroll-provider/useScrollContext"
 import theme from "../../theme"
 import Box from "../box"
 
@@ -37,6 +38,16 @@ const Loader = () => {
   const { progress, onLoaderDone } = useLoadProgress()
   const [animateHeight, setAnimateHeight] = useState(false)
   const [showContent, setShowContent] = useState(false)
+  const LSScroll = useScrollContext()
+
+  useEffect(() => {
+    if (!LSScroll.current) {
+      return
+    }
+
+    LSScroll.current.stop()
+  }, [LSScroll.current])
+
   const handleRest = () => {
     if (progress * 100 >= 100) {
       onLoaderDone()
@@ -53,6 +64,9 @@ const Loader = () => {
   })
 
   if (showContent) {
+    if (LSScroll.current) {
+      LSScroll.current.start()
+    }
     return null
   }
 

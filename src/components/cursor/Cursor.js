@@ -1,18 +1,8 @@
-import { keyframes } from "@emotion/core"
 import styled from "@emotion/styled"
 import React, { useEffect, useState } from "react"
+import useLoadProgress from "../../providers/load-progress/useLoadProgress"
 import useMousePositionContext from "../../providers/mouse-position/useMousePositionContext"
 import theme from "../../theme"
-
-const shrink = keyframes`
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(0.8);
-  }
-`
 
 export function HandleMouseOver() {
   useEffect(() => {
@@ -116,7 +106,7 @@ const Svg = styled("svg")`
     transform-origin: center;
     stroke: ${theme.colors.primary};
     transition: transform ${theme.transitions.durations.fast}ms
-        ${theme.transitions.easings.inOut},
+        ${theme.transitions.easings.out},
       stroke-dashoffset ${theme.transitions.durations.long * 2}ms
         ${theme.transitions.easings.out} ${theme.transitions.durations.normal}ms;
     stroke-dasharray: 100;
@@ -140,7 +130,7 @@ const Svg = styled("svg")`
 
   body.hover & {
     circle {
-      transform: scale3d(1.3, 1.3, 1);
+      transform: scale3d(1.2, 1.2, 1);
     }
     path {
       opacity: 0;
@@ -213,6 +203,7 @@ const CursorSvg = ({ style, mounted }) => (
 )
 
 const Cursor = () => {
+  const { loaderReady } = useLoadProgress()
   const [x, y] = useMousePositionContext()
   const [hasTouch, setHasTouch] = useState(false)
   useEffect(() => {
@@ -234,7 +225,7 @@ const Cursor = () => {
 
   return (
     <CursorSvg
-      mounted={x !== -60}
+      mounted={loaderReady && x !== -60}
       style={{
         left: `${x}px`,
         top: `${y}px`,
