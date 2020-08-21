@@ -3,6 +3,7 @@
   src: url("../../static/fonts/Messapia-Bold.woff2") format("woff2"),
     url("../../static/fonts/Messapia-Bold.woff") format("woff"),
     url("../../static/fonts/Messapia-Bold.otf") format("truetype");
+  font-display: swap;
 }
 
 *,
