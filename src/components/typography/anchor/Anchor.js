@@ -7,7 +7,6 @@ const css = `
   font-family: ${theme.fonts.copy};
   transform: translateY(${0.11}em);
   line-height: 1.3;
-
   text-decoration: none;
 
   &:hover,

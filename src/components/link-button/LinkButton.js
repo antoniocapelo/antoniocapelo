@@ -42,10 +42,12 @@ const buttonStyle = ({ theme, selected }) => css`
     }
   }
 
-  &:focus,
-  &:hover {
-    span {
-      color: ${theme.colors.primary};
+  @media (hover: hover) {
+    &:focus,
+    &:hover {
+      span {
+        color: ${theme.colors.primary};
+      }
     }
   }
 

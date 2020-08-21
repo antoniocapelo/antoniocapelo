@@ -91,11 +91,9 @@ const Svg = styled("svg")`
   z-index: 60;
   overflow: visible;
   pointer-events: none;
-  transition: transform ${theme.transitions.durations.fast}ms
-    ${theme.transitions.easings.inOut};
-
-  path {
+  transition: transform ${theme.transitions.durations.fast}ms path {
     stroke: ${theme.colors.primary};
+    will-change: opacity, transform;
     transition: opacity ${theme.transitions.durations.normal}ms
         ${theme.transitions.easings.inOut},
       transform ${theme.transitions.durations.normal}ms
@@ -104,6 +102,7 @@ const Svg = styled("svg")`
 
   circle {
     transform-origin: center;
+    will-change: stroke-dashoffset, transform;
     stroke: ${theme.colors.primary};
     transition: transform ${theme.transitions.durations.fast}ms
         ${theme.transitions.easings.out},
@@ -115,8 +114,10 @@ const Svg = styled("svg")`
 
   path {
     opacity: 0;
+    will-change: opacity, transform;
     transform: translateX(var(--arrow-movement));
   }
+
   path:nth-of-type(2) {
     transform: translateX(calc(-1 * var(--arrow-movement)));
   }
