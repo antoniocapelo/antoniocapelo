@@ -9,8 +9,6 @@ const LoadProgressProvider = ({ children }) => {
   const [loaderReady, setLoaderReady] = useState(false)
 
   const incrementRequests = a => {
-    console.log(a)
-
     setNumRequests(prevVal => {
       return prevVal + 1
     })
@@ -33,8 +31,6 @@ const LoadProgressProvider = ({ children }) => {
       requestDone()
     })
   }, [])
-
-  console.log({ numRequests, requestsDone })
 
   return (
     <LoadProgressContext.Provider

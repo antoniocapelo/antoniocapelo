@@ -34,7 +34,6 @@ const Bar = styled(animated.div)`
 `
 
 const Loader = () => {
-  // return null
   const { progress, onLoaderDone } = useLoadProgress()
   const [animateHeight, setAnimateHeight] = useState(false)
   const [showContent, setShowContent] = useState(false)
