@@ -34,7 +34,6 @@ const items = [
     __html: ` I work mostly on the front-end stack, creating <span>performant</span> applications which are <span>pleasant</span> to use.`,
   },
 ]
-const springConfig = { mass: 5, tension: 2000, friction: 200 }
 
 const Intro = () => {
   const { loaderReady } = useLoadProgress()
@@ -55,7 +54,6 @@ const Intro = () => {
     filter: loaderReady ? "brightness(1)" : "brightness(0.3)",
     transform: loaderReady ? `translateY(0)` : `translateY(40px)`,
     from: { filter: "brightness(0)" },
-    // config: config.stiff,
     ref: trailRef,
   })
 
@@ -73,7 +71,7 @@ const Intro = () => {
         <Col size={[1, 1, 9 / 12]} ml={["0%", "0%", "25%"]}>
           {trail.map(({ filter, transform }, index) => (
             <IntroText
-              mb={index === 0 ? [4, 5, 7] : undefined}
+              mb={index === 0 ? [4, 5, 7] : 5}
               key={items[index].__html}
               style={{ filter, transform }}
               dangerouslySetInnerHTML={items[index]}

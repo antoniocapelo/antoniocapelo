@@ -114,6 +114,10 @@ const Svg = styled("svg")`
 
   path {
     opacity: 0;
+    transition: transform ${theme.transitions.durations.fast}ms
+        ${theme.transitions.easings.out},
+      opacity ${theme.transitions.durations.long * 2}ms;
+    stroke: ${theme.colors.primary};
     will-change: opacity, transform;
     transform: translateX(var(--arrow-movement));
   }

@@ -10,7 +10,6 @@ export default ({ children }) => {
     LocoScroll.current = new LocomotiveScroll({
       el: document.querySelector("body"),
       smooth: true,
-      smoothMobile: true,
     })
 
     const t = setTimeout(() => {
