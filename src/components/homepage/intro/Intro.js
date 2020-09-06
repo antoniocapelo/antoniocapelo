@@ -67,7 +67,7 @@ const Intro = () => {
       display="flex"
       alignItems="flex-end"
     >
-      <RowAnimated style={props}>
+      <RowAnimated style={props} mb="4">
         <Col size={[1, 1, 9 / 12]} ml={["0%", "0%", "25%"]}>
           {trail.map(({ filter, transform }, index) => (
             <IntroText

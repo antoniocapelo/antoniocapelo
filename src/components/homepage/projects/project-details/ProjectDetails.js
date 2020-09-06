@@ -93,7 +93,7 @@ const ProjectDetails = ({ name, details, align = "left" }) => {
         data-scroll-repeat
         id={`details-${name}`}
         position="absolute"
-        top={[-48, -64]}
+        top={[-64, -80]}
         height={`calc(100% - ${descHeight}px)`}
       ></Box>
       {align === "left" && (
