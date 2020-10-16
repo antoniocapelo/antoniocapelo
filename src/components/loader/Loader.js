@@ -28,7 +28,7 @@ const Bar = styled(animated.div)`
 
     @supports (-webkit-touch-callout: none) {
       /* The hack for Safari */
-      bottom: ${48 + theme.layout.iosBottomBarHeight}px;
+      bottom: ${46}px;
     }
   }
 `
