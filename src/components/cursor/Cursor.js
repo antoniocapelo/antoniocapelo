@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import useLoadProgress from "../../providers/load-progress/useLoadProgress"
 import useMousePositionContext from "../../providers/mouse-position/useMousePositionContext"
+import useScrollContext from "../../providers/scroll-provider/useScrollContext"
 import theme from "../../theme"
 
 export function HandleMouseOver() {
@@ -114,9 +115,9 @@ const Svg = styled("svg")`
 
   path {
     opacity: 0;
-    transition: transform ${theme.transitions.durations.fast}ms
+    transition: transform ${theme.transitions.durations.long * 2}ms
         ${theme.transitions.easings.out},
-      opacity ${theme.transitions.durations.long * 2}ms;
+      opacity ${theme.transitions.durations.long}ms;
     stroke: ${theme.colors.primary};
     will-change: opacity, transform;
     transform: translateX(var(--arrow-movement));
@@ -130,6 +131,9 @@ const Svg = styled("svg")`
     path {
       opacity: 1;
       transform: translateX(0px);
+      transition: transform ${theme.transitions.durations.long}ms
+          ${theme.transitions.easings.out},
+        opacity ${theme.transitions.durations.long}ms;
     }
   }
 
@@ -210,7 +214,9 @@ const CursorSvg = ({ style, mounted }) => (
 const Cursor = () => {
   const { loaderReady } = useLoadProgress()
   const [x, y] = useMousePositionContext()
+  const mousePos = useRef({ x: 0, y: 0 })
   const [hasTouch, setHasTouch] = useState(false)
+  const LSScroll = useScrollContext()
   useEffect(() => {
     function browserSupportsTouchEvents() {
       return (
@@ -220,6 +226,33 @@ const Cursor = () => {
 
     setHasTouch(browserSupportsTouchEvents())
   }, [])
+
+  const handleScroll = () => {
+    const { x, y } = mousePos.current
+    const els = document.elementsFromPoint(x, y)
+    const draggableContainer = els.find(
+      e => e.attributes && !!e.attributes["data-draggable"]
+    )
+    if (draggableContainer) {
+      document.body.classList.add(cursorClassnames.drag)
+    } else {
+      document.body.classList.remove(cursorClassnames.drag)
+    }
+  }
+
+  useEffect(() => {
+    mousePos.current = {
+      x,
+      y,
+    }
+  }, [x, y, mousePos])
+
+  useEffect(() => {
+    if (!LSScroll.current) {
+      return
+    }
+    LSScroll.current.on("scroll", handleScroll)
+  }, [LSScroll.current])
 
   HandleMouseOver()
   HandleMouseClick()

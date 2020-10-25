@@ -10,14 +10,20 @@ const css = `
   text-decoration: none;
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     text-decoration: none;
 
     > span:after {
       transform: scale3d(0.8, 1,1);
     }
   }
+
+  &:active {
+    > span:after {
+      transform: scale3d(0.6, 1,1);
+    }
+  }
+
 
   > span {
     position: relative;

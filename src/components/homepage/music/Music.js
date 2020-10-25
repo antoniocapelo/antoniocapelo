@@ -67,8 +67,8 @@ const Music = ({ items }) => {
         {items.map(({ id, name, url, image: { fluid } }) => (
           <CoverWrapper
             bg="dark"
-            width={[200, 200, 350]}
-            height={[200, 200, 350]}
+            width={[200, 200, 260, 350]}
+            height={[200, 200, 260, 350]}
             key={`${id}`}
             position="relative"
           >
