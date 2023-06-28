@@ -1,4 +1,4 @@
-2## 👋 Hi there, I'm António Capelo
+## 👋 Hi there, I'm António Capelo
 
 - Team Lead & Frontend Engineer @ [remote](https://remote.com/). Passionate about design-systems, performance, user experience and accessibility.
 - Dabble with design @ [capelo.me](https://capelo.me/) / [radio.capelo.me](https://radio.capelo.me/) / [8-bars-a-week](https://8-bars-a-week.capelo.me/) / [lemongrass](https://lemongrass.capelo.me/)
